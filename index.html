@@ -1,35 +1,36 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html><html lang='en'>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
 <title>Vella Co.</title>
 <style>
-body{margin:0;font-family:Arial,sans-serif;background:#111;color:#fff}
-header{display:flex;justify-content:space-between;align-items:center;padding:20px 40px;background:#000;position:sticky;top:0}
-.logo{font-size:28px;font-weight:bold;color:#f5c542}
-.hero{height:90vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:linear-gradient(135deg,#000,#333)}
-.hero h1{font-size:60px;margin:0}
-.hero p{font-size:20px;color:#ccc}
-.btn{padding:15px 35px;background:#f5c542;color:#000;border:none;font-weight:bold;cursor:pointer;border-radius:30px}
-.products{display:flex;flex-wrap:wrap;justify-content:center;gap:30px;padding:60px 20px}
-.card{background:#1e1e1e;border-radius:20px;padding:20px;width:250px;text-align:center;box-shadow:0 10px 20px rgba(0,0,0,.5)}
-.card img{width:100%;border-radius:15px}
-.card h3{margin:15px 0}
-footer{text-align:center;padding:20px;background:#000;color:#aaa}
+body{margin:0;font-family:Arial;background:#000;color:#fff}
+header{background:#111;padding:20px;text-align:center;border-bottom:1px solid #d4af37}
+.logo{font-size:32px;color:#d4af37;font-weight:bold}
+.hero{text-align:center;padding:50px;background:linear-gradient(black,#222)}
+.hero h1{font-size:48px}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;padding:30px}
+.card{background:#111;border:1px solid #d4af37;border-radius:15px;padding:15px;text-align:center}
+.card img{width:100%;border-radius:10px}
+.price{color:#d4af37;font-size:20px}
+button{background:#25D366;color:#fff;border:none;padding:12px 20px;border-radius:25px;cursor:pointer;font-weight:bold}
+footer{text-align:center;padding:20px;background:#111}
 </style>
 </head>
 <body>
-<header><div class='logo'>VELLA CO.</div><nav>Premium Streetwear</nav></header>
-<section class='hero'>
-<h1>Wear The Vibe</h1>
-<p>Luxury Streetwear Collection</p>
-<button class='btn'>Shop Now</button>
-</section>
+<header><div class='logo'>VELLA CO.</div><p>Luxury Streetwear</p></header>
+<section class='hero'><h1>Black Luxury Collection</h1><p>Premium T-Shirts For Bold Style</p></section>
 <section class='products'>
-<div class='card'><img src='https://via.placeholder.com/250x300'><h3>Black Oversized Tee</h3><p>₹999</p></div>
-<div class='card'><img src='https://via.placeholder.com/250x300'><h3>White Minimal Tee</h3><p>₹899</p></div>
-<div class='card'><img src='https://via.placeholder.com/250x300'><h3>Signature Drop</h3><p>₹1199</p></div>
+<div class='card'><img src='images/t1.jpg'><h3>Oversized Black Tee</h3><p class='price'>₹999</p><button onclick="order('Oversized Black Tee')">Order on WhatsApp</button></div>
+<div class='card'><img src='images/t2.jpg'><h3>Gold Signature Tee</h3><p class='price'>₹1199</p><button onclick="order('Gold Signature Tee')">Order on WhatsApp</button></div>
+<div class='card'><img src='images/t3.jpg'><h3>Minimal White Tee</h3><p class='price'>₹899</p><button onclick="order('Minimal White Tee')">Order on WhatsApp</button></div>
+<div class='card'><img src='images/t4.jpg'><h3>Street Drop Tee</h3><p class='price'>₹1099</p><button onclick="order('Street Drop Tee')">Order on WhatsApp</button></div>
+<div class='card'><img src='images/t5.jpg'><h3>Classic Vella Tee</h3><p class='price'>₹949</p><button onclick="order('Classic Vella Tee')">Order on WhatsApp</button></div>
+<div class='card'><img src='images/t6.jpg'><h3>Premium Luxe Tee</h3><p class='price'>₹1299</p><button onclick="order('Premium Luxe Tee')">Order on WhatsApp</button></div>
 </section>
-<footer>© 2026 Vella Co. All Rights Reserved</footer>
+<footer>© 2026 Vella Co.</footer>
+<script>
+function order(product){window.open(`https://wa.me/91YOURNUMBER?text=Hi, I want to order ${product}`,'_blank');}
+</script>
 </body>
 </html>
