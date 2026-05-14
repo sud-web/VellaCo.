@@ -1,272 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-    <meta name="google-site-verification" content="xUmOYRHHWJfEhCy4si4YuqaEnED_YV_-ulr0-Gyzsvs" />
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pro Thumbnail Downloader | Ultra HD</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
-
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background: #ffffff; 
-            color: #000; 
-            margin: 0; 
-            padding: 0; 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        /* Full page wrapper */
-        .wrapper { 
-            width: 90%;
-            max-width: 600px; 
-            margin: 40px auto; 
-            border: 4px solid #000; 
-            border-radius: 30px; 
-            padding: 40px; 
-            box-shadow: 15px 15px 0px #000;
-            background: #fff;
-            transition: all 0.3s ease;
-            box-sizing: border-box;
-        }
-
-        h1 { 
-            font-size: 2.8rem; 
-            text-transform: uppercase; 
-            margin: 0;
-            font-weight: 900;
-            letter-spacing: -2px;
-            line-height: 1;
-        }
-
-        .tagline { 
-            font-weight: 700; 
-            color: #555; 
-            margin-top: 10px;
-            font-size: 1.1rem;
-        }
-
-        /* Input Styling */
-        .input-area { margin: 40px 0 20px 0; }
-        input { 
-            width: 100%; 
-            padding: 20px; 
-            border: 4px solid #000; 
-            border-radius: 15px; 
-            font-size: 18px; 
-            box-sizing: border-box; 
-            outline: none;
-            font-weight: 700;
-            transition: 0.3s;
-        }
-        input:focus { background: #fdfdfd; transform: scale(1.02); }
-
-        /* Button Animation */
-        .get-btn { 
-            width: 100%;
-            padding: 20px; 
-            background: #000; 
-            color: #fff; 
-            border: none; 
-            border-radius: 15px; 
-            font-size: 20px; 
-            font-weight: 900; 
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .get-btn:hover {
-            transform: translate(-5px, -5px);
-            box-shadow: 7px 7px 0px #444;
-        }
-
-        .get-btn:active {
-            transform: translate(0px, 0px);
-            box-shadow: none;
-        }
-
-        /* Result Area */
-        #result-area { 
-            display: none; 
-            margin-top: 40px; 
-            border-top: 4px solid #000; 
-            padding-top: 30px; 
-            animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-        }
-
-        @keyframes bounceIn {
-            from { opacity: 0; transform: scale(0.8); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        img { 
-            width: 100%; 
-            border: 4px solid #000; 
-            border-radius: 20px; 
-            margin-bottom: 25px;
-        }
-
-        .dl-link {
-            display: block;
-            background: #fff;
-            color: #000;
-            border: 4px solid #000;
-            padding: 18px;
-            text-decoration: none;
-            border-radius: 15px;
-            font-weight: 900;
-            font-size: 1.1rem;
-            text-align: center;
-            transition: 0.2s;
-            cursor: pointer;
-        }
-
-        .dl-link:hover { background: #000; color: #fff; }
-
-        /* Guide Section with Animation */
-        .guide-container {
-            width: 90%;
-            max-width: 600px;
-            margin-bottom: 60px;
-        }
-
-        .guide-title {
-            font-size: 1.8rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            margin-bottom: 25px;
-        }
-
-        .step-card {
-            display: flex;
-            align-items: center;
-            background: #fff;
-            border: 3px solid #000;
-            padding: 20px;
-            border-radius: 20px;
-            margin-bottom: 15px;
-            box-shadow: 6px 6px 0px #000;
-            transition: 0.3s;
-        }
-
-        .step-card:hover { transform: translateX(10px); }
-
-        .icon-circle {
-            min-width: 50px;
-            height: 50px;
-            background: #000;
-            color: #fff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            margin-right: 20px;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-
-        .step-text b { display: block; font-size: 1.1rem; text-transform: uppercase; }
-        .step-text span { color: #555; font-size: 0.95rem; font-weight: 600; }
-
-        @media (max-width: 500px) {
-            h1 { font-size: 2.1rem; }
-            .wrapper { padding: 25px; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Movie Review Site</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: white;
+  color: black;
+  margin: 0;
+  padding: 0;
+}
+header {
+  text-align: center;
+  padding: 20px;
+  border-bottom: 2px solid black;
+}
+.movie-card {
+  width: 300px;
+  margin: 30px auto;
+  border: 1px solid black;
+  padding: 15px;
+  text-align: center;
+}
+.movie-card img {
+  width: 100%;
+}
+button {
+  background: black;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+</style>
 </head>
 <body>
-
-<div class="wrapper">
-    <h1>THUMBNAIL<br>DOWNLOADER</h1>
-    <p class="tagline">Download YouTube Thumbnails in Ultra HD 4K Quality.</p>
-
-    <div class="input-area">
-        <input type="text" id="urlInput" placeholder="Paste YouTube Link Here...">
-    </div>
-
-    <button class="get-btn" onclick="fetchThumb()">Get Thumbnail</button>
-
-    <div id="result-area">
-        <img id="thumbPreview" src="" alt="Thumbnail">
-        <button class="dl-link" onclick="downloadAction()">⬇️ DOWNLOAD HD IMAGE</button>
-        <p style="text-align: center; font-size: 13px; margin-top: 15px;">Tip: For mobile, long-press the image to save directly.</p>
-    </div>
+<header>
+<h1>My Movie Reviews</h1>
+<p>Honest Reviews of Latest Movies</p>
+</header>
+<div class="movie-card">
+<img src="images/movie1.jpg" alt="Movie Poster">
+<h2>Movie Name</h2>
+<p>Rating: ⭐⭐⭐⭐☆</p>
+<p>This movie has amazing action and story.</p>
+<button>Read Review</button>
 </div>
-
-<div class="guide-container">
-    <h2 class="guide-title">How to Use?</h2>
-    
-    <div class="step-card">
-        <div class="icon-circle">🔗</div>
-        <div class="step-text">
-            <b>Copy Link</b>
-            <span>YouTube video par jayein aur uska 'Share' link copy karein.</span>
-        </div>
-    </div>
-
-    <div class="step-card">
-        <div class="icon-circle">📥</div>
-        <div class="step-text">
-            <b>Paste & Process</b>
-            <span>Copy kiya hua link box mein paste karke button dabayein.</span>
-        </div>
-    </div>
-
-    <div class="step-card">
-        <div class="icon-circle">💾</div>
-        <div class="step-text">
-            <b>Save Image</b>
-            <span>Niche diye gaye download button par click karke save karein.</span>
-        </div>
-    </div>
-</div>
-
-<script>
-    function fetchThumb() {
-        let val = document.getElementById('urlInput').value;
-        let id = "";
-        
-        if(val.includes("v=")) { id = val.split("v=")[1].split("&")[0]; }
-        else if(val.includes("youtu.be/")) { id = val.split("youtu.be/")[1].split("?")[0]; }
-
-        if(id) {
-            let imgUrl = `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
-            document.getElementById('thumbPreview').src = imgUrl;
-            document.getElementById('result-area').style.display = 'block';
-            window.scrollTo({ top: document.getElementById('result-area').offsetTop, behavior: 'smooth' });
-        } else {
-            alert("Bhai, pehle sahi link toh daalo!");
-        }
-    }
-
-    async function downloadAction() {
-        const img = document.getElementById('thumbPreview');
-        try {
-            const response = await fetch(img.src);
-            const blob = await response.blob();
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'youtube-thumbnail.jpg';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-        } catch (e) {
-            window.open(img.src, '_blank');
-        }
-    }
-</script>
-
 </body>
 </html>
