@@ -53,6 +53,7 @@ font-weight:700;
 letter-spacing:1.5px;
 cursor: pointer;
 color: #000000;
+text-decoration: none;
 }
 
 .right-icons{
@@ -62,16 +63,24 @@ gap:20px;
 }
 
 .icon{
-font-size:24px;
+font-size:22px;
 cursor:pointer;
 position:relative;
 display: flex;
 align-items: center;
-gap: 5px;
+gap: 8px;
+background: #f5f5f5;
+padding: 6px 14px;
+border-radius: 20px;
+transition: 0.2s;
+}
+
+.icon:hover {
+background: #e0e0e0;
 }
 
 .cart-text-nav {
-font-size: 14px;
+font-size: 13px;
 font-weight: 600;
 color: #111111;
 }
@@ -91,7 +100,7 @@ PROMO POSTER BANNER SLIDER
 
 .promo-container {
 width: 100%;
-padding: 12px;
+padding: 15px 12px;
 background: #ffffff;
 }
 
@@ -116,8 +125,6 @@ transition: opacity 0.6s ease-in-out;
 display: flex;
 align-items: center;
 justify-content: center;
-background-size: cover;
-background-position: center;
 }
 
 .poster-slide.active {
@@ -125,18 +132,14 @@ opacity: 1;
 position: relative;
 }
 
-/* Temporary styled background for posters placeholder until you add your real image paths */
 .p-bg-1 {
-background-color: #fce4ec; 
-background-image: linear-gradient(135deg, #fce4ec 0%, #f1f8ff 100%);
+background: linear-gradient(135deg, #fce4ec 0%, #f1f8ff 100%);
 }
 .p-bg-2 {
-background-color: #e8eaf6;
-background-image: linear-gradient(135deg, #e8eaf6 0%, #e3f2fd 100%);
+background: linear-gradient(135deg, #e8eaf6 0%, #e3f2fd 100%);
 }
 .p-bg-3 {
-background-color: #efebe9;
-background-image: linear-gradient(135deg, #efebe9 0%, #f5f5f5 100%);
+background: linear-gradient(135deg, #efebe9 0%, #f5f5f5 100%);
 }
 
 .poster-content {
@@ -149,7 +152,7 @@ font-size: 20px;
 font-weight: 700;
 color: #111111;
 text-transform: uppercase;
-margin-bottom: 4px;
+margin-bottom: 6px;
 }
 
 .poster-content p {
@@ -167,9 +170,9 @@ display:block;
 }
 
 .section-divider-title {
-font-size: 16px;
+font-size: 15px;
 font-weight: 700;
-padding: 15px 12px 5px 12px;
+padding: 10px 12px 5px 12px;
 letter-spacing: 0.5px;
 text-transform: uppercase;
 color: #222222;
@@ -182,7 +185,7 @@ grid-template-columns: repeat(2, 1fr);
 gap:12px;
 }
 
-.card{
+.card {
 background:#ffffff;
 border:1px solid #eeeeee;
 border-radius:8px;
@@ -191,13 +194,19 @@ cursor:pointer;
 display: flex;
 flex-direction: column;
 justify-content: space-between;
+box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+transition: transform 0.2s;
+}
+
+.card:hover {
+transform: translateY(-2px);
 }
 
 .card img{
 width:100%;
-height:240px;
+height:220px;
 object-fit:cover;
-background: #f5f5f5;
+background: #f9f9f9;
 }
 
 .card-info{
@@ -212,12 +221,12 @@ justify-content: space-between;
 font-size:13px;
 font-weight:500;
 color:#333333;
-margin-bottom:5px;
+margin-bottom:6px;
 display: -webkit-box;
 -webkit-line-clamp: 2;
 -webkit-box-orient: vertical;
 overflow: hidden;
-height: 38px;
+height: 36px;
 line-height: 1.4;
 }
 
@@ -249,13 +258,13 @@ font-weight: 600;
 
 .small-btn{
 width:100%;
-padding:10px;
+padding:9px;
 border:1px solid #111111;
 border-radius:6px;
 background:transparent;
 color:#111111;
 font-weight:600;
-font-size:13px;
+font-size:12px;
 cursor:pointer;
 transition: 0.2s;
 }
@@ -265,29 +274,26 @@ background: #111111;
 color: #ffffff;
 }
 
-/* PAGINATION/PART NAVIGATION CONTROLS */
+/* PAGINATION BUTTONS */
 .pagination-container {
 display: flex;
 justify-content: center;
 align-items: center;
-gap: 20px;
-padding: 25px 12px;
+gap: 15px;
+padding: 20px 12px 40px 12px;
 width: 100%;
 }
 
 .pag-btn {
-padding: 12px 28px;
+padding: 10px 24px;
 border: 1px solid #111111;
 background: #ffffff;
 color: #111111;
-font-size: 14px;
+font-size: 13px;
 font-weight: 600;
 border-radius: 30px;
 cursor: pointer;
 transition: 0.2s;
-display: flex;
-align-items: center;
-gap: 5px;
 }
 
 .pag-btn:hover:not(:disabled) {
@@ -302,7 +308,7 @@ cursor: not-allowed;
 }
 
 .page-indicator {
-font-size: 14px;
+font-size: 13px;
 font-weight: 500;
 color: #666666;
 }
@@ -319,15 +325,16 @@ background: #ffffff;
 
 .back-btn{
 margin:15px;
-font-size:16px;
+font-size:15px;
 cursor:pointer;
 display:inline-block;
 font-weight: 500;
+color: #555555;
 }
 
 .product-image{
 width:100%;
-height:400px;
+height:380px;
 object-fit:cover;
 background: #f5f5f5;
 }
@@ -337,7 +344,7 @@ padding:20px;
 }
 
 .product-title{
-font-size:22px;
+font-size:20px;
 font-weight:700;
 margin-bottom:8px;
 color: #111111;
@@ -351,7 +358,7 @@ margin-bottom: 15px;
 }
 
 .product-price{
-font-size:26px;
+font-size:24px;
 font-weight:700;
 color:#ff3f6c;
 }
@@ -366,14 +373,16 @@ text-decoration: line-through;
 line-height:1.6;
 color:#666666;
 margin-bottom:20px;
-font-size: 14px;
+font-size: 13px;
 }
 
 .section-title {
-font-size:15px; 
+font-size:14px; 
 font-weight:600; 
 margin-top:15px;
 margin-bottom:8px;
+text-transform: uppercase;
+color: #444444;
 }
 
 .colors, .sizes {
@@ -384,12 +393,12 @@ flex-wrap:wrap;
 }
 
 .color-opt, .size {
-padding:10px 18px;
+padding:8px 16px;
 border:1px solid #cccccc;
 border-radius:6px;
 cursor:pointer;
 font-weight: 500;
-font-size: 14px;
+font-size: 13px;
 transition: 0.2s;
 color: #111111;
 background: #ffffff;
@@ -401,13 +410,17 @@ color: #ffffff;
 border-color: #000000;
 }
 
-/* Validation Alert Message inside standard layout */
+/* Validation Alert Text Placement */
 .validation-error {
-color: #ff3f6c;
+color: #ffffff;
+background: #ff3f6c;
 font-size: 13px;
 font-weight: 500;
-margin-bottom: 12px;
+padding: 10px;
+border-radius: 6px;
+margin-bottom: 15px;
 display: none;
+text-align: center;
 }
 
 .action-buttons{
@@ -418,19 +431,18 @@ margin-top: 5px;
 
 .action-buttons button{
 flex:1;
-padding:15px;
+padding:14px;
 border:none;
 border-radius:8px;
-font-size:15px;
+font-size:14px;
 font-weight:700;
 cursor:pointer;
 }
 
-/* Enabled vs Disabled styling markers */
 .cart-btn{
 background:#f5f5f5;
 color:#111111;
-border: 1px solid #ddd !important;
+border: 1px solid #cccccc !important;
 }
 
 .buy-btn{
@@ -439,7 +451,7 @@ color:#ffffff;
 }
 
 /* =========================
-CART
+CART PAGE
 ========================= */
 
 #cartPage{
@@ -467,14 +479,14 @@ align-items: center;
 }
 
 .cart-item img{
-width:80px;
-height:80px;
+width:70px;
+height:70px;
 border-radius:6px;
 object-fit:cover;
 }
 
 .cart-info h3{
-font-size: 14px;
+font-size: 13px;
 margin-bottom:5px;
 }
 
@@ -489,7 +501,7 @@ padding: 8px;
 
 .total-box{
 margin-top:25px;
-font-size:22px;
+font-size:20px;
 font-weight:700;
 border-top: 1px dashed #dddddd;
 padding-top: 15px;
@@ -497,13 +509,13 @@ padding-top: 15px;
 
 .checkout-btn{
 width:100%;
-padding:16px;
+padding:15px;
 margin-top:20px;
 border:none;
 border-radius:8px;
 background:#111111;
 color:#ffffff;
-font-size:16px;
+font-size:15px;
 font-weight:700;
 cursor:pointer;
 }
@@ -539,7 +551,7 @@ color: #111111;
 
 .form-box h2{
 margin-bottom:15px;
-font-size: 22px;
+font-size: 20px;
 font-weight: 700;
 }
 
@@ -547,7 +559,7 @@ font-weight: 700;
 .form-box textarea,
 .form-box select{
 width:100%;
-padding:14px;
+padding:12px;
 margin-top:12px;
 background:#f5f5f5;
 border:1px solid #e0e0e0;
@@ -557,46 +569,37 @@ font-size: 14px;
 outline: none;
 }
 
-.form-box input:focus, .form-box textarea:focus{
-border-color: #111111;
-}
-
 .form-box button{
 width:100%;
-padding:15px;
+padding:14px;
 margin-top:20px;
 border:none;
 border-radius:8px;
 background:#00e676; 
 color:white;
-font-size:16px;
+font-size:15px;
 font-weight:700;
 cursor:pointer;
-box-shadow: 0 4px 10px rgba(0,230,118,0.3);
 }
 
 /* =========================
-FOOTER 
+FOOTER
 ========================= */
 
 footer {
 background: #f9f9f9;
-padding: 30px 20px;
+padding: 25px 20px;
 text-align: center;
 border-top: 1px solid #eeeeee;
-margin-top: 50px;
+margin-top: 40px;
 }
 
 footer p {
-font-size: 13px;
-color: #666666;
-letter-spacing: 0.5px;
+font-size: 12px;
+color: #777777;
 }
 
-/* =========================
-RESPONSIVE FOR DESKTOP
-========================= */
-
+/* RESPONSIVE DESKTOP */
 @media(min-width:768px){
 .products{
 grid-template-columns: repeat(4, 1fr); 
@@ -604,16 +607,13 @@ gap:20px;
 padding: 20px;
 }
 .card img{
-height:300px;
-}
-.form-box{
-margin-top:100px;
+height:280px;
 }
 .poster-slider {
-height: 320px;
+height: 280px;
 }
 .poster-content h2 {
-font-size: 32px;
+font-size: 30px;
 }
 }
 
@@ -624,18 +624,13 @@ font-size: 32px;
 <body>
 
 <header>
-
 <div class="logo" onclick="goHome()">VELLA CO.</div>
-
 <div class="right-icons">
-
 <div class="icon" onclick="openCart()">
 <span class="cart-text-nav">Cart Layout</span> 🛒
 <span class="cart-count" id="cartCount">0</span>
 </div>
-
 </div>
-
 </header>
 
 <div id="homePage">
@@ -651,13 +646,13 @@ font-size: 32px;
 <div class="poster-slide p-bg-2" id="slide1">
 <div class="poster-content">
 <h2>✨ Just Added: Casual Wear</h2>
-<p>Fresh summer stock added today. High stretch luxury fabric comfort.</p>
+<p>Fresh stock added today. High stretch luxury fabric comfort.</p>
 </div>
 </div>
 <div class="poster-slide p-bg-3" id="slide2">
 <div class="poster-content">
 <h2>⚡ Midnight Deals</h2>
-<p>Free express shipping over orders above ₹1500. Order on WhatsApp!</p>
+<p>Order on WhatsApp & get Free Delivery above ₹1500.</p>
 </div>
 </div>
 </div>
@@ -676,7 +671,6 @@ font-size: 32px;
 </div>
 
 <div id="productPage">
-
 <div class="back-btn" onclick="goBack()">
 ⬅ Back to Store
 </div>
@@ -684,7 +678,6 @@ font-size: 32px;
 <img id="productImage" class="product-image">
 
 <div class="product-details">
-
 <div class="product-title" id="productTitle"></div>
 
 <div class="product-price-box">
@@ -713,81 +706,41 @@ Crafted with fine soft-touch fabric engineered for everyday elevated casual styl
 </div>
 
 <div class="action-buttons">
-
-<button class="cart-btn" onclick="addCurrentToCart()">
-Add To Cart
-</button>
-
-<button class="buy-btn" onclick="buyNow()">
-Buy Now
-</button>
-
+<button class="cart-btn" onclick="addCurrentToCart()">Add To Cart</button>
+<button class="buy-btn" onclick="buyNow()">Buy Now</button>
 </div>
-
 </div>
-
 </div>
 
 <div id="cartPage">
-
-<div class="back-btn" onclick="goBack()">
-⬅ Back
-</div>
-
+<div class="back-btn" onclick="goBack()">⬅ Back</div>
 <h2>Your Cart Layout</h2>
-
 <br>
-
 <div id="cartItems"></div>
-
-<div class="total-box">
-Total Amount: ₹<span id="totalPrice">0</span>
-</div>
-
-<button class="checkout-btn" onclick="openCheckout()">
-Proceed To Checkout
-</button>
-
+<div class="total-box">Total Amount: ₹<span id="totalPrice">0</span></div>
+<button class="checkout-btn" onclick="openCheckout()">Proceed To Checkout</button>
 </div>
 
 <div id="checkoutForm" onclick="closeFormOutside(event)">
-
 <div class="form-box" onclick="event.stopPropagation()">
-
 <h2>Checkout Details</h2>
-
 <input type="text" id="name" placeholder="Full Name" required>
-
 <input type="number" id="mobile" placeholder="Mobile Number" required>
-
 <textarea id="address" placeholder="Full Address" rows="3" required></textarea>
-
 <select id="gender">
 <option>Male</option>
 <option>Female</option>
 <option>Other</option>
 </select>
-
 <select id="state">
 <option>Uttar Pradesh</option>
 <option>Delhi</option>
 <option>Maharashtra</option>
 <option>Bihar</option>
 <option>Punjab</option>
-<option>Rajasthan</option>
-<option>Haryana</option>
-<option>Gujarat</option>
-<option>Madhya Pradesh</option>
-<option>Tamil Nadu</option>
-<option>Karnataka</option>
 </select>
-
-<button onclick="sendOrder()">
-Place Order On WhatsApp
-</button>
-
+<button onclick="sendOrder()">Place Order On WhatsApp</button>
 </div>
-
 </div>
 
 <footer>
@@ -797,18 +750,17 @@ Place Order On WhatsApp
 <script>
 
 /* =========================
-12 UNIQUE PRODUCTS DATA
+12 COMPLETE DYNAMIC PRODUCTS
 ========================= */
-
 const products=[
-// PART 1 ITEMS (First 6 items)
+// PART 1 ITEMS
 {
 id:1,
 name:"Men White Solid Polo Neck Collar T-shirt",
 price:909,
 mrp:1299,
 discount:"30% OFF",
-image:"images/shirt1.jpg",
+image:"https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=500&auto=format&fit=crop",
 colors: ["White", "Pink", "Olive"]
 },
 {
@@ -817,7 +769,7 @@ name:"Men White Printed Stretchable Round Neck T-shirt",
 price:1234,
 mrp:1899,
 discount:"35% OFF",
-image:"images/shirt2.jpg",
+image:"https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500&auto=format&fit=crop",
 colors: ["White", "Black"]
 },
 {
@@ -826,7 +778,7 @@ name:"Men Maroon Solid Round Crew Neck T-shirt",
 price:699,
 mrp:999,
 discount:"30% OFF",
-image:"images/shirt3.jpg",
+image:"https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=500&auto=format&fit=crop",
 colors: ["Maroon", "Black"]
 },
 {
@@ -835,7 +787,7 @@ name:"Men Olive Solid Polo Neck Collar T-shirt",
 price:974,
 mrp:1299,
 discount:"25% OFF",
-image:"images/shirt4.jpg",
+image:"https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=500&auto=format&fit=crop",
 colors: ["Olive", "White"]
 },
 {
@@ -844,7 +796,7 @@ name:"Men Black Graphic Print Regular Fit Polo",
 price:979,
 mrp:1399,
 discount:"30% OFF",
-image:"images/shirt5.jpg",
+image:"https://images.unsplash.com/photo-1503341455253-b2bc71f093b1?w=500&auto=format&fit=crop",
 colors: ["Black", "Grey"]
 },
 {
@@ -853,17 +805,17 @@ name:"Men Light Blue Stripe Polo Neck T-shirt",
 price:1899,
 mrp:1999,
 discount:"5% OFF",
-image:"images/shirt6.jpg",
+image:"https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=500&auto=format&fit=crop",
 colors: ["Light Blue", "Pink"]
 },
-// PART 2 ITEMS (Next 6 items)
+// PART 2 ITEMS
 {
 id:7,
 name:"Men Premium Navy Casual Cotton Polo Shirt",
 price:899,
 mrp:1499,
 discount:"40% OFF",
-image:"images/shirt7.jpg",
+image:"https://images.unsplash.com/photo-1617137968427-85924c800a22?w=500&auto=format&fit=crop",
 colors: ["Navy Blue", "White"]
 },
 {
@@ -872,7 +824,7 @@ name:"Men Sporty Grey Melange Gym Crewneck",
 price:599,
 mrp:999,
 discount:"40% OFF",
-image:"images/shirt8.jpg",
+image:"https://images.unsplash.com/photo-1562157873-818bc0726f68?w=500&auto=format&fit=crop",
 colors: ["Grey", "Black"]
 },
 {
@@ -881,7 +833,7 @@ name:"Men Luxury Crimson Red Slim Fit T-shirt",
 price:1199,
 mrp:1799,
 discount:"33% OFF",
-image:"images/shirt9.jpg",
+image:"https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=500&auto=format&fit=crop",
 colors: ["Red", "Charcoal"]
 },
 {
@@ -890,7 +842,7 @@ name:"Men Classic Mustard Yellow Streetwear Tee",
 price:749,
 mrp:1199,
 discount:"37% OFF",
-image:"images/shirt10.jpg",
+image:"https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=500&auto=format&fit=crop",
 colors: ["Yellow", "White"]
 },
 {
@@ -899,7 +851,7 @@ name:"Men Urban Khaki Cargo Overlay Jersey",
 price:1350,
 mrp:1999,
 discount:"32% OFF",
-image:"images/shirt11.jpg",
+image:"https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=500&auto=format&fit=crop",
 colors: ["Khaki", "Black"]
 },
 {
@@ -908,15 +860,14 @@ name:"Men Dark Charcoal Minimalist Pocket Tee",
 price:649,
 mrp:999,
 discount:"35% OFF",
-image:"images/shirt12.jpg",
+image:"https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=500&auto=format&fit=crop",
 colors: ["Charcoal", "Olive"]
 }
 ];
 
 /* =========================
-PART DIVISION SYSTEM (PAGINATION)
+DISPLAY & PART LOGIC
 ========================= */
-
 let currentPart = 1;
 const itemsPerPage = 6;
 
@@ -924,7 +875,6 @@ function displayProducts(){
 const productsContainer=document.getElementById("productsContainer");
 productsContainer.innerHTML="";
 
-// Calculate boundary index items
 const startIndex = (currentPart - 1) * itemsPerPage;
 const endIndex = startIndex + itemsPerPage;
 const currentSelectionList = products.slice(startIndex, endIndex);
@@ -946,7 +896,6 @@ productsContainer.innerHTML+=`
 `;
 });
 
-// Update indicators & button states
 document.getElementById("pageIndicator").innerText = `Part ${currentPart} of 2`;
 document.getElementById("prevBtn").disabled = (currentPart === 1);
 document.getElementById("nextBtn").disabled = (currentPart === 2);
@@ -958,26 +907,17 @@ displayProducts();
 window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
-// Initial Load execution
 displayProducts();
 
-/* =========================
-AUTOMATIC BANNER SLIDER TRACK
-========================= */
-
+/* BANNER TIMER */
 let activeSlideIdx = 0;
-const totalSlides = 3;
-
 setInterval(() => {
 document.getElementById(`slide${activeSlideIdx}`).classList.remove("active");
-activeSlideIdx = (activeSlideIdx + 1) % totalSlides;
+activeSlideIdx = (activeSlideIdx + 1) % 3;
 document.getElementById(`slide${activeSlideIdx}`).classList.add("active");
-}, 4000); // Transitions slide posters smoothly every 4 seconds
+}, 4000);
 
-/* =========================
-NAVIGATION LAYOUT CONTROL
-========================= */
-
+/* NAV FUNCTIONS */
 const homePage=document.getElementById("homePage");
 const productPage=document.getElementById("productPage");
 const cartPage=document.getElementById("cartPage");
@@ -991,12 +931,7 @@ homePage.style.display="block";
 productPage.style.display="none";
 cartPage.style.display="none";
 closeCheckout();
-history.pushState({page:"home"}, "", " ");
 }
-
-/* =========================
-SELECTION OPTIONS TRIGGERS
-========================= */
 
 function selectColor(element) {
 const colorElements = document.querySelectorAll('.color-opt');
@@ -1030,25 +965,16 @@ function hideValidationError() {
 document.getElementById("validationErrorMsg").style.display = "none";
 }
 
-/* =========================
-OPEN PRODUCT PAGE DETAILS
-========================= */
-
 function openProduct(id){
 let product=products.find(p=>p.id===id);
 currentProduct=product;
-
 resetSelections();
 
 const colorContainer = document.getElementById("colorContainer");
 colorContainer.innerHTML = "";
-if(product.colors && product.colors.length > 0) {
 product.colors.forEach(col => {
 colorContainer.innerHTML += `<div class="color-opt" onclick="selectColor(this)">${col}</div>`;
 });
-} else {
-colorContainer.innerHTML = `<div class="color-opt" onclick="selectColor(this)">Default</div>`;
-}
 
 document.getElementById("productImage").src=product.image;
 document.getElementById("productTitle").innerText=product.name;
@@ -1058,36 +984,57 @@ document.getElementById("productMrp").innerText="₹"+product.mrp;
 homePage.style.display="none";
 cartPage.style.display="none";
 productPage.style.display="block";
-
 window.scrollTo({top: 0, behavior: 'smooth'});
-history.pushState({page:"product"}, "", "#product");
 }
 
 function goBack(){
-history.back();
+goHome();
 }
 
-window.onpopstate=function(){
-if(location.hash=="#product"){
-productPage.style.display="block";
-homePage.style.display="none";
-cartPage.style.display="none";
-}else if(location.hash=="#cart"){
-cartPage.style.display="block";
-homePage.style.display="none";
-productPage.style.display="none";
-}else{
-homePage.style.display="block";
-productPage.style.display="none";
-cartPage.style.display="none";
-}
-};
-
-/* =========================
-CART SYSTEM (WITH STRICT SELECTION CHECK)
-========================= */
-
+/* CART CONTROLLER */
 let cart=[];
 
 function addCurrentToCart(){
-// Check if both size and color are pick
+if(!selectedColorValue || !selectedSizeValue) {
+showValidationError();
+return;
+}
+let productToAdd = {
+...currentProduct,
+selectedSize: selectedSizeValue,
+selectedColor: selectedColorValue
+};
+cart.push(productToAdd);
+updateCart();
+goHome();
+}
+
+function openCart(){
+homePage.style.display="none";
+productPage.style.display="none";
+cartPage.style.display="block";
+updateCart();
+}
+
+function removeFromCart(index) {
+cart.splice(index, 1);
+updateCart();
+}
+
+function updateCart(){
+let cartItems=document.getElementById("cartItems");
+cartItems.innerHTML="";
+let total=0;
+
+if(cart.length === 0) {
+cartItems.innerHTML = "<p style='color:#666;'>Your cart layout is empty.</p>";
+document.getElementById("totalPrice").innerText="0";
+document.getElementById("cartCount").innerText="0";
+return;
+}
+
+cart.forEach((item, index)=>{
+total += item.price;
+cartItems.innerHTML += `
+<div class="cart-item">
+<div cla
