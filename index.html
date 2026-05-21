@@ -1,1040 +1,767 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Vella Co.</title>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-
-/* =========================
-GLOBAL & WHITE THEME
-========================= */
-
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
 }
 
 body{
-background:#ffffff;
-color:#111111;
-overflow-x:hidden;
+    background:#ffffff;
+    color:#111111;
 }
 
 /* =========================
-HEADER
+HEADER & SEARCH / CART LAYOUT
 ========================= */
-
 header{
-width:100%;
-padding:15px 20px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-position:sticky;
-top:0;
-z-index:1000;
-background:#ffffff;
-border-bottom:1px solid #eeeeee;
-box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+    width:100%;
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:#ffffff;
+    border-bottom:1px solid #eeeeee;
 }
 
 .logo{
-font-size:24px;
-font-weight:700;
-letter-spacing:1.5px;
-cursor: pointer;
-color: #000000;
-text-decoration: none;
+    font-size:22px;
+    font-weight:700;
+    letter-spacing:1px;
+    cursor: pointer;
 }
 
-.right-icons{
-display:flex;
-align-items:center;
-gap:20px;
+.header-right{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    flex-grow: 1;
+    justify-content: flex-end;
+    max-width: 70%;
 }
 
-.icon{
-font-size:22px;
-cursor:pointer;
-position:relative;
-display: flex;
-align-items: center;
-gap: 8px;
-background: #f5f5f5;
-padding: 6px 14px;
-border-radius: 20px;
-transition: 0.2s;
+/* Search bar inside header (Left of Cart) */
+.search-container {
+    position: relative;
+    width: 60%;
+    max-width: 300px;
 }
 
-.icon:hover {
-background: #e0e0e0;
+.search-container input {
+    width: 100%;
+    padding: 8px 35px 8px 15px;
+    border: 1px solid #cccccc;
+    border-radius: 20px;
+    font-size: 13px;
+    outline: none;
 }
 
-.cart-text-nav {
-font-size: 13px;
-font-weight: 600;
-color: #111111;
+.search-container .search-icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: #777777;
+}
+
+.cart-btn-nav{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: #f5f5f5;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
 }
 
 .cart-count{
-background:#000000;
-color:#ffffff;
-font-size:11px;
-padding:2px 7px;
-border-radius:50%;
-font-weight:700;
+    background:#000000;
+    color:#ffffff;
+    font-size:11px;
+    padding:2px 7px;
+    border-radius:50%;
 }
 
 /* =========================
-PROMO POSTER BANNER SLIDER
+PROMO POSTER / DISCOUNT BANNER
 ========================= */
-
-.promo-container {
-width: 100%;
-padding: 15px 12px;
-background: #ffffff;
+.promo-banner-section {
+    padding: 15px;
+    width: 100%;
 }
 
-.poster-slider {
-width: 100%;
-height: 180px;
-border-radius: 12px;
-overflow: hidden;
-position: relative;
-background: #f0f0f0;
-box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+.banner-slider {
+    width: 100%;
+    height: 160px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
-.poster-slide {
-width: 100%;
-height: 100%;
-position: absolute;
-top: 0;
-left: 0;
-opacity: 0;
-transition: opacity 0.6s ease-in-out;
-display: flex;
-align-items: center;
-justify-content: center;
+.slide-poster {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #111111;
+    padding: 20px;
 }
 
-.poster-slide.active {
-opacity: 1;
-position: relative;
+.slide-poster.active {
+    opacity: 1;
+    position: relative;
 }
 
-.p-bg-1 {
-background: linear-gradient(135deg, #fce4ec 0%, #f1f8ff 100%);
-}
-.p-bg-2 {
-background: linear-gradient(135deg, #e8eaf6 0%, #e3f2fd 100%);
-}
-.p-bg-3 {
-background: linear-gradient(135deg, #efebe9 0%, #f5f5f5 100%);
-}
+/* Default Background Gradient colors (Aap apni images bhi daal sakte ho) */
+.bg-banner-1 { background: linear-gradient(135deg, #ffecb3, #fff9c4); }
+.bg-banner-2 { background: linear-gradient(135deg, #e1f5fe, #b3e5fc); }
+.bg-banner-3 { background: linear-gradient(135deg, #fce4ec, #f8bbd0); }
 
-.poster-content {
-text-align: center;
-padding: 20px;
-}
-
-.poster-content h2 {
-font-size: 20px;
-font-weight: 700;
-color: #111111;
-text-transform: uppercase;
-margin-bottom: 6px;
-}
-
-.poster-content p {
-font-size: 13px;
-color: #555555;
-font-weight: 500;
-}
+.slide-poster h2 { font-size: 18px; font-weight: 700; text-transform: uppercase; margin-bottom: 5px;}
+.slide-poster p { font-size: 12px; font-weight: 500; color: #444444; }
 
 /* =========================
-HOME PAGE & 2-COLUMN GRID
+PRODUCTS GRID (ALL PRODUCTS SHOW TOGETHER)
 ========================= */
-
-#homePage{
-display:block;
-}
-
-.section-divider-title {
-font-size: 15px;
-font-weight: 700;
-padding: 10px 12px 5px 12px;
-letter-spacing: 0.5px;
-text-transform: uppercase;
-color: #222222;
-}
-
-.products{
-padding:12px;
-display:grid;
-grid-template-columns: repeat(2, 1fr); 
-gap:12px;
-}
-
-.card {
-background:#ffffff;
-border:1px solid #eeeeee;
-border-radius:8px;
-overflow:hidden;
-cursor:pointer;
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-box-shadow: 0 2px 8px rgba(0,0,0,0.02);
-transition: transform 0.2s;
-}
-
-.card:hover {
-transform: translateY(-2px);
-}
-
-.card img{
-width:100%;
-height:220px;
-object-fit:cover;
-background: #f9f9f9;
-}
-
-.card-info{
-padding:10px;
-flex-grow: 1;
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-}
-
-.card-title{
-font-size:13px;
-font-weight:500;
-color:#333333;
-margin-bottom:6px;
-display: -webkit-box;
--webkit-line-clamp: 2;
--webkit-box-orient: vertical;
-overflow: hidden;
-height: 36px;
-line-height: 1.4;
-}
-
-.price-box {
-display: flex;
-align-items: center;
-gap: 6px;
-margin-bottom: 8px;
-flex-wrap: wrap;
-}
-
-.price{
-font-size:15px;
-font-weight:700;
-color:#000000;
-}
-
-.mrp {
-font-size: 12px;
-color: #888888;
-text-decoration: line-through;
-}
-
-.discount {
-font-size: 11px;
-color: #ff3f6c;
-font-weight: 600;
-}
-
-.small-btn{
-width:100%;
-padding:9px;
-border:1px solid #111111;
-border-radius:6px;
-background:transparent;
-color:#111111;
-font-weight:600;
-font-size:12px;
-cursor:pointer;
-transition: 0.2s;
-}
-
-.card:hover .small-btn {
-background: #111111;
-color: #ffffff;
-}
-
-/* PAGINATION BUTTONS */
-.pagination-container {
-display: flex;
-justify-content: center;
-align-items: center;
-gap: 15px;
-padding: 20px 12px 40px 12px;
-width: 100%;
-}
-
-.pag-btn {
-padding: 10px 24px;
-border: 1px solid #111111;
-background: #ffffff;
-color: #111111;
-font-size: 13px;
-font-weight: 600;
-border-radius: 30px;
-cursor: pointer;
-transition: 0.2s;
-}
-
-.pag-btn:hover:not(:disabled) {
-background: #111111;
-color: #ffffff;
-}
-
-.pag-btn:disabled {
-border-color: #cccccc;
-color: #cccccc;
-cursor: not-allowed;
-}
-
-.page-indicator {
-font-size: 13px;
-font-weight: 500;
-color: #666666;
-}
-
-/* =========================
-PRODUCT PAGE
-========================= */
-
-#productPage{
-display:none;
-padding-bottom:100px;
-background: #ffffff;
-}
-
-.back-btn{
-margin:15px;
-font-size:15px;
-cursor:pointer;
-display:inline-block;
-font-weight: 500;
-color: #555555;
-}
-
-.product-image{
-width:100%;
-height:380px;
-object-fit:cover;
-background: #f5f5f5;
-}
-
-.product-details{
-padding:20px;
-}
-
-.product-title{
-font-size:20px;
-font-weight:700;
-margin-bottom:8px;
-color: #111111;
-}
-
-.product-price-box {
-display: flex;
-align-items: center;
-gap: 10px;
-margin-bottom: 15px;
-}
-
-.product-price{
-font-size:24px;
-font-weight:700;
-color:#ff3f6c;
-}
-
-.product-mrp {
-font-size: 16px;
-color: #888888;
-text-decoration: line-through;
-}
-
-.desc{
-line-height:1.6;
-color:#666666;
-margin-bottom:20px;
-font-size: 13px;
+#homePage {
+    display: block;
 }
 
 .section-title {
-font-size:14px; 
-font-weight:600; 
-margin-top:15px;
-margin-bottom:8px;
-text-transform: uppercase;
-color: #444444;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 10px 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-.colors, .sizes {
-display:flex;
-gap:10px;
-margin-bottom:20px;
-flex-wrap:wrap;
+.products-grid{
+    padding: 0 15px 30px 15px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
 }
 
-.color-opt, .size {
-padding:8px 16px;
-border:1px solid #cccccc;
-border-radius:6px;
-cursor:pointer;
-font-weight: 500;
-font-size: 13px;
-transition: 0.2s;
-color: #111111;
-background: #ffffff;
+.product-card{
+    background:#ffffff;
+    border:1px solid #eeeeee;
+    border-radius:8px;
+    overflow:hidden;
+    cursor:pointer;
+    display: flex;
+    flex-direction: column;
 }
 
-.color-opt.selected, .size.selected {
-background: #000000;
-color: #ffffff;
-border-color: #000000;
+.product-card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    background: #fdfdfdfd;
 }
 
-/* Validation Alert Text Placement */
-.validation-error {
-color: #ffffff;
-background: #ff3f6c;
-font-size: 13px;
-font-weight: 500;
-padding: 10px;
-border-radius: 6px;
-margin-bottom: 15px;
-display: none;
-text-align: center;
+.product-info{
+    padding:10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
 }
 
-.action-buttons{
-display:flex;
-gap:12px;
-margin-top: 5px;
+.product-name{
+    font-size:12px;
+    font-weight:500;
+    color:#333333;
+    line-height: 1.4;
+    height: 34px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 5px;
 }
 
-.action-buttons button{
-flex:1;
-padding:14px;
-border:none;
-border-radius:8px;
-font-size:14px;
-font-weight:700;
-cursor:pointer;
+.price-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
 }
 
-.cart-btn{
-background:#f5f5f5;
-color:#111111;
-border: 1px solid #cccccc !important;
+.current-price{
+    font-size:14px;
+    font-weight:700;
+    color:#000000;
 }
 
-.buy-btn{
-background:#111111;
-color:#ffffff;
+.old-mrp {
+    font-size: 11px;
+    color: #888888;
+    text-decoration: line-through;
+}
+
+.discount-tag {
+    font-size: 11px;
+    color: #ff3f6c;
+    font-weight: 600;
+}
+
+.view-btn{
+    width:100%;
+    padding:8px;
+    border:1px solid #111111;
+    border-radius:6px;
+    background:transparent;
+    color:#111111;
+    font-weight:600;
+    font-size:12px;
+    cursor:pointer;
 }
 
 /* =========================
-CART PAGE
+PRODUCT DETAILS PAGE
 ========================= */
-
-#cartPage{
-display:none;
-padding:20px;
-padding-bottom:120px;
+#productPage{
+    display:none;
+    padding-bottom:60px;
 }
 
-.cart-item{
-display:flex;
-gap:15px;
-background:#f9f9f9;
-padding:12px;
-border-radius:10px;
-margin-bottom:15px;
-align-items: center;
-justify-content: space-between;
-border: 1px solid #eeeeee;
+.back-btn {
+    padding: 15px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.main-product-img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    background: #f5f5f5;
+}
+
+.details-wrapper {
+    padding: 20px;
+}
+
+.details-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.details-price-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.details-price {
+    font-size: 22px;
+    font-weight: 700;
+    color: #ff3f6c;
+}
+
+.details-mrp {
+    font-size: 15px;
+    color: #888888;
+    text-decoration: line-through;
+}
+
+.select-title {
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 15px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.option-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.opt-box {
+    padding: 8px 16px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    background: #ffffff;
+}
+
+.opt-box.selected {
+    background: #000000;
+    color: #ffffff;
+    border-color: #000000;
+}
+
+/* Validation Alert Warning style */
+.validation-warning {
+    background: #ffebee;
+    color: #c62828;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    display: none;
+    text-align: center;
+}
+
+.main-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.main-actions button {
+    flex: 1;
+    padding: 14px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.add-cart-btn { background: #f5f5f5; color: #111111; border: 1px solid #cccccc; }
+.buy-now-btn { background: #111111; color: #ffffff; }
+
+/* =========================
+CART PAGE LAYOUT
+========================= */
+#cartPage {
+    display: none;
+    padding: 20px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background: #f9f9f9;
+    border: 1px solid #eeeeee;
+    border-radius: 8px;
+    margin-bottom: 12px;
 }
 
 .cart-item-left {
-display: flex;
-gap: 15px;
-align-items: center;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
-.cart-item img{
-width:70px;
-height:70px;
-border-radius:6px;
-object-fit:cover;
+.cart-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
 }
 
-.cart-info h3{
-font-size: 13px;
-margin-bottom:5px;
+.cart-item-info h4 { font-size: 13px; margin-bottom: 3px; }
+.cart-item-info p { font-size: 11px; color: #666666; }
+
+.remove-item-btn {
+    background: transparent;
+    border: none;
+    color: #ff3f6c;
+    font-size: 16px;
+    cursor: pointer;
 }
 
-.remove-btn {
-background: transparent;
-border: none;
-color: #ff3f6c;
-font-size: 18px;
-cursor: pointer;
-padding: 8px;
+.cart-total-box {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: 700;
+    padding-top: 15px;
+    border-top: 1px dashed #cccccc;
 }
 
-.total-box{
-margin-top:25px;
-font-size:20px;
-font-weight:700;
-border-top: 1px dashed #dddddd;
-padding-top: 15px;
-}
-
-.checkout-btn{
-width:100%;
-padding:15px;
-margin-top:20px;
-border:none;
-border-radius:8px;
-background:#111111;
-color:#ffffff;
-font-size:15px;
-font-weight:700;
-cursor:pointer;
+.checkout-trigger-btn {
+    width: 100%;
+    padding: 14px;
+    background: #111111;
+    color: #ffffff;
+    border: none;
+    font-weight: 700;
+    border-radius: 6px;
+    margin-top: 15px;
+    cursor: pointer;
 }
 
 /* =========================
-CHECKOUT MODAL
+CHECKOUT MODAL FORM
 ========================= */
-
-#checkoutForm{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0, 0, 0, 0.6);
-z-index:5000;
-overflow:auto;
-padding:20px;
+#checkoutModal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 2000;
+    padding: 20px;
 }
 
-.form-box{
-max-width:450px;
-margin:auto;
-background:#ffffff;
-padding:25px;
-border-radius:16px;
-margin-top:60px;
-box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-position: relative;
-color: #111111;
+.modal-content {
+    background: #ffffff;
+    max-width: 420px;
+    margin: 50px auto auto auto;
+    padding: 20px;
+    border-radius: 12px;
 }
 
-.form-box h2{
-margin-bottom:15px;
-font-size: 20px;
-font-weight: 700;
+.modal-content h3 { margin-bottom: 15px; }
+
+.modal-content input, .modal-content textarea, .modal-content select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    background: #f5f5f5;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 13px;
+    outline: none;
 }
 
-.form-box input,
-.form-box textarea,
-.form-box select{
-width:100%;
-padding:12px;
-margin-top:12px;
-background:#f5f5f5;
-border:1px solid #e0e0e0;
-border-radius:8px;
-color:#111111;
-font-size: 14px;
-outline: none;
-}
-
-.form-box button{
-width:100%;
-padding:14px;
-margin-top:20px;
-border:none;
-border-radius:8px;
-background:#00e676; 
-color:white;
-font-size:15px;
-font-weight:700;
-cursor:pointer;
+.modal-content button {
+    width: 100%;
+    padding: 14px;
+    background: #00e676;
+    color: #ffffff;
+    font-weight: 700;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
 }
 
 /* =========================
-FOOTER
+FOOTER (ICONS REMOVED)
 ========================= */
-
-footer {
-background: #f9f9f9;
-padding: 25px 20px;
-text-align: center;
-border-top: 1px solid #eeeeee;
-margin-top: 40px;
+footer{
+    text-align: center;
+    background: #f9f9f9;
+    padding: 20px;
+    border-top: 1px solid #eeeeee;
+    margin-top: 40px;
+    font-size: 12px;
+    color: #666666;
 }
 
-footer p {
-font-size: 12px;
-color: #777777;
+@media(min-width: 768px){
+    .products-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .banner-slider { height: 260px; }
+    .slide-poster h2 { font-size: 26px; }
 }
-
-/* RESPONSIVE DESKTOP */
-@media(min-width:768px){
-.products{
-grid-template-columns: repeat(4, 1fr); 
-gap:20px;
-padding: 20px;
-}
-.card img{
-height:280px;
-}
-.poster-slider {
-height: 280px;
-}
-.poster-content h2 {
-font-size: 30px;
-}
-}
-
 </style>
-
 </head>
-
 <body>
 
 <header>
-<div class="logo" onclick="goHome()">VELLA CO.</div>
-<div class="right-icons">
-<div class="icon" onclick="openCart()">
-<span class="cart-text-nav">Cart Layout</span> 🛒
-<span class="cart-count" id="cartCount">0</span>
-</div>
-</div>
+    <div class="logo" onclick="showSection('homePage')">VELLA CO.</div>
+    <div class="header-right">
+        
+        <div class="search-container">
+            <input type="text" id="storeSearch" placeholder="Search product..." onkeyup="filterProducts()">
+            <span class="search-icon">🔍</span>
+        </div>
+        
+        <div class="cart-btn-nav" onclick="openCartPage()">
+            <span>Cart</span> 🛒
+            <span class="cart-count" id="cartBadgeCount">0</span>
+        </div>
+    </div>
 </header>
 
 <div id="homePage">
 
-<div class="promo-container">
-<div class="poster-slider">
-<div class="poster-slide active p-bg-1" id="slide0">
-<div class="poster-content">
-<h2>🔥 Mega Clearance Sale</h2>
-<p>Flat 30% to 50% off on all Premium Men Polo Collections!</p>
-</div>
-</div>
-<div class="poster-slide p-bg-2" id="slide1">
-<div class="poster-content">
-<h2>✨ Just Added: Casual Wear</h2>
-<p>Fresh stock added today. High stretch luxury fabric comfort.</p>
-</div>
-</div>
-<div class="poster-slide p-bg-3" id="slide2">
-<div class="poster-content">
-<h2>⚡ Midnight Deals</h2>
-<p>Order on WhatsApp & get Free Delivery above ₹1500.</p>
-</div>
-</div>
-</div>
-</div>
+    <div class="promo-banner-section">
+        <div class="banner-slider">
+            
+            <div class="slide-poster active bg-banner-1" id="bSlide0">
+                <h2>🔥 SEASON END CLEARANCE</h2>
+                <p>Get flat 30% to 50% discount on all premium categories instantly!</p>
+            </div>
+            
+            <div class="slide-poster bg-banner-2" id="bSlide1">
+                <h2>✨ NEW ARRIVALS YET</h2>
+                <p>Premium stretch luxury fit summer polos added just now.</p>
+            </div>
+            
+            <div class="slide-poster bg-banner-3" id="bSlide2">
+                <h2>⚡ WEEKEND WHATSAPP DEALS</h2>
+                <p>Free delivery across all states for orders above ₹1499!</p>
+            </div>
+            
+        </div>
+    </div>
 
-<div class="section-divider-title">Our Exclusive Collection</div>
-
-<div class="products" id="productsContainer"></div>
-
-<div class="pagination-container">
-<button class="pag-btn" id="prevBtn" onclick="changePart(-1)" disabled>⬅ Prev</button>
-<span class="page-indicator" id="pageIndicator">Part 1 of 2</span>
-<button class="pag-btn" id="nextBtn" onclick="changePart(1)">Next ➡</button>
-</div>
-
+    <div class="section-title">Exclusive Collection</div>
+    <div class="products-grid" id="mainProductsContainer"></div>
 </div>
 
 <div id="productPage">
-<div class="back-btn" onclick="goBack()">
-⬅ Back to Store
-</div>
+    <div class="back-btn" onclick="showSection('homePage')">⬅ Back to Store</div>
+    <img id="viewProductImg" class="main-product-img" src="" alt="product">
+    
+    <div class="details-wrapper">
+        <h2 class="details-title" id="viewProductTitle"></h2>
+        <div class="details-price-box">
+            <span class="details-price" id="viewProductPrice"></span>
+            <span class="details-mrp" id="viewProductMrp"></span>
+        </div>
+        
+        <p style="font-size: 13px; color: #666; line-height: 1.5; margin-bottom: 15px;">
+            Premium high quality everyday casual wear styling piece. Expertly tailormade with soft skin touch, breathable and luxury blended premium thread yarns.
+        </p>
 
-<img id="productImage" class="product-image">
+        <div class="select-title">Select Colour</div>
+        <div class="option-group" id="viewColorGroup"></div>
 
-<div class="product-details">
-<div class="product-title" id="productTitle"></div>
+        <div class="select-title">Select Size</div>
+        <div class="option-group" id="viewSizeGroup">
+            <div class="opt-box size-box-opt" onclick="markSelection(this, 'size')">S</div>
+            <div class="opt-box size-box-opt" onclick="markSelection(this, 'size')">M</div>
+            <div class="opt-box size-box-opt" onclick="markSelection(this, 'size')">L</div>
+            <div class="opt-box size-box-opt" onclick="markSelection(this, 'size')">XL</div>
+        </div>
 
-<div class="product-price-box">
-<span class="product-price" id="productPrice"></span>
-<span class="product-mrp" id="productMrp"></span>
-</div>
+        <div class="validation-warning" id="alertWarnBox">
+            ⚠️ Attention: Please pick both Colour and Size before adding to cart/buying!
+        </div>
 
-<div class="desc">
-Premium quality modern apparel featuring an exceptionally comfortable fit. 
-Crafted with fine soft-touch fabric engineered for everyday elevated casual styling.
-</div>
-
-<div class="section-title">Select Colour</div>
-<div class="colors" id="colorContainer"></div>
-
-<div class="section-title">Select Size</div>
-<div class="sizes">
-<div class="size" onclick="selectSize(this)">S</div>
-<div class="size" onclick="selectSize(this)">M</div>
-<div class="size" onclick="selectSize(this)">L</div>
-<div class="size" onclick="selectSize(this)">XL</div>
-</div>
-
-<div class="validation-error" id="validationErrorMsg">
-⚠️ Please choose both a Colour and a Size before moving forward!
-</div>
-
-<div class="action-buttons">
-<button class="cart-btn" onclick="addCurrentToCart()">Add To Cart</button>
-<button class="buy-btn" onclick="buyNow()">Buy Now</button>
-</div>
-</div>
+        <div class="main-actions">
+            <button class="add-cart-btn" onclick="executeAddToCart()">Add To Cart</button>
+            <button class="buy-now-btn" onclick="executeBuyNow()">Buy Now</button>
+        </div>
+    </div>
 </div>
 
 <div id="cartPage">
-<div class="back-btn" onclick="goBack()">⬅ Back</div>
-<h2>Your Cart Layout</h2>
-<br>
-<div id="cartItems"></div>
-<div class="total-box">Total Amount: ₹<span id="totalPrice">0</span></div>
-<button class="checkout-btn" onclick="openCheckout()">Proceed To Checkout</button>
+    <div class="back-btn" onclick="showSection('homePage')">⬅ Back to Store</div>
+    <h3>Your Current Cart Layout</h3>
+    <br>
+    <div id="cartItemsList"></div>
+    <div class="cart-total-box">Total Value: ₹<span id="cartTotalPrice">0</span></div>
+    <button class="checkout-trigger-btn" onclick="openCheckoutModal()">Proceed To Order</button>
 </div>
 
-<div id="checkoutForm" onclick="closeFormOutside(event)">
-<div class="form-box" onclick="event.stopPropagation()">
-<h2>Checkout Details</h2>
-<input type="text" id="name" placeholder="Full Name" required>
-<input type="number" id="mobile" placeholder="Mobile Number" required>
-<textarea id="address" placeholder="Full Address" rows="3" required></textarea>
-<select id="gender">
-<option>Male</option>
-<option>Female</option>
-<option>Other</option>
-</select>
-<select id="state">
-<option>Uttar Pradesh</option>
-<option>Delhi</option>
-<option>Maharashtra</option>
-<option>Bihar</option>
-<option>Punjab</option>
-</select>
-<button onclick="sendOrder()">Place Order On WhatsApp</button>
-</div>
+<div id="checkoutModal" onclick="closeModalOutside(event)">
+    <div class="modal-content">
+        <h3>Shipping Details</h3>
+        <input type="text" id="custName" placeholder="Full Name" required>
+        <input type="number" id="custMobile" placeholder="Mobile Number" required>
+        <textarea id="custAddress" placeholder="Full Address with Pincode" rows="3" required></textarea>
+        <select id="custGender">
+            <option>Male</option>
+            <option>Female</option>
+        </select>
+        <select id="custState">
+            <option>Uttar Pradesh</option>
+            <option>Delhi</option>
+            <option>Maharashtra</option>
+            <option>Bihar</option>
+            <option>Punjab</option>
+            <option>Haryana</option>
+        </select>
+        <button onclick="dispatchToWhatsApp()">Confirm Order via WhatsApp</button>
+    </div>
 </div>
 
 <footer>
-<p>© 2026 Vella Co. Premium Store. All Rights Reserved.</p>
+    <p>© 2026 Vella Co. Premium Clothing Store. All Rights Reserved.</p>
 </footer>
 
 <script>
+/* ========================================================
+📸 PRODUCT KI PHOTO KAISE ADD KARNI HAI (INSTRUCTIONS):
+-----------------------------------------------------------
+Neeche 'products' data array ke andar har ek item me 'image' field hai.
+1. Agar aapke paas apne computer/folder me image h:
+   image: "images/shirt1.jpg" ya "shirt1.png" daalein.
+2. Agar aap internet se live link lagana chahte hain:
+   image: "https://kaisebhibutton.com/photo.jpg" daalein.
+======================================================== */
 
-/* =========================
-12 COMPLETE DYNAMIC PRODUCTS
-========================= */
-const products=[
-// PART 1 ITEMS
-{
-id:1,
-name:"Men White Solid Polo Neck Collar T-shirt",
-price:909,
-mrp:1299,
-discount:"30% OFF",
-image:"https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=500&auto=format&fit=crop",
-colors: ["White", "Pink", "Olive"]
-},
-{
-id:2,
-name:"Men White Printed Stretchable Round Neck T-shirt",
-price:1234,
-mrp:1899,
-discount:"35% OFF",
-image:"https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500&auto=format&fit=crop",
-colors: ["White", "Black"]
-},
-{
-id:3,
-name:"Men Maroon Solid Round Crew Neck T-shirt",
-price:699,
-mrp:999,
-discount:"30% OFF",
-image:"https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=500&auto=format&fit=crop",
-colors: ["Maroon", "Black"]
-},
-{
-id:4,
-name:"Men Olive Solid Polo Neck Collar T-shirt",
-price:974,
-mrp:1299,
-discount:"25% OFF",
-image:"https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=500&auto=format&fit=crop",
-colors: ["Olive", "White"]
-},
-{
-id:5,
-name:"Men Black Graphic Print Regular Fit Polo",
-price:979,
-mrp:1399,
-discount:"30% OFF",
-image:"https://images.unsplash.com/photo-1503341455253-b2bc71f093b1?w=500&auto=format&fit=crop",
-colors: ["Black", "Grey"]
-},
-{
-id:6,
-name:"Men Light Blue Stripe Polo Neck T-shirt",
-price:1899,
-mrp:1999,
-discount:"5% OFF",
-image:"https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=500&auto=format&fit=crop",
-colors: ["Light Blue", "Pink"]
-},
-// PART 2 ITEMS
-{
-id:7,
-name:"Men Premium Navy Casual Cotton Polo Shirt",
-price:899,
-mrp:1499,
-discount:"40% OFF",
-image:"https://images.unsplash.com/photo-1617137968427-85924c800a22?w=500&auto=format&fit=crop",
-colors: ["Navy Blue", "White"]
-},
-{
-id:8,
-name:"Men Sporty Grey Melange Gym Crewneck",
-price:599,
-mrp:999,
-discount:"40% OFF",
-image:"https://images.unsplash.com/photo-1562157873-818bc0726f68?w=500&auto=format&fit=crop",
-colors: ["Grey", "Black"]
-},
-{
-id:9,
-name:"Men Luxury Crimson Red Slim Fit T-shirt",
-price:1199,
-mrp:1799,
-discount:"33% OFF",
-image:"https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=500&auto=format&fit=crop",
-colors: ["Red", "Charcoal"]
-},
-{
-id:10,
-name:"Men Classic Mustard Yellow Streetwear Tee",
-price:749,
-mrp:1199,
-discount:"37% OFF",
-image:"https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=500&auto=format&fit=crop",
-colors: ["Yellow", "White"]
-},
-{
-id:11,
-name:"Men Urban Khaki Cargo Overlay Jersey",
-price:1350,
-mrp:1999,
-discount:"32% OFF",
-image:"https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=500&auto=format&fit=crop",
-colors: ["Khaki", "Black"]
-},
-{
-id:12,
-name:"Men Dark Charcoal Minimalist Pocket Tee",
-price:649,
-mrp:999,
-discount:"35% OFF",
-image:"https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=500&auto=format&fit=crop",
-colors: ["Charcoal", "Olive"]
-}
+const products = [
+    {
+        id: 1,
+        name: "Men White Solid Polo Neck Collar T-shirt",
+        price: 909,
+        mrp: 1299,
+        discount: "30% OFF",
+        image: "https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=500", // <-- Yahan apni photo ka path daalein
+        colors: ["White", "Pink", "Olive"]
+    },
+    {
+        id: 2,
+        name: "Men White Printed Stretchable Round Neck T-shirt",
+        price: 1234,
+        mrp: 1899,
+        discount: "35% OFF",
+        image: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500", // <-- Yahan apni photo ka path daalein
+        colors: ["White", "Black"]
+    },
+    {
+        id: 3,
+        name: "Men Maroon Solid Round Crew Neck T-shirt",
+        price: 699,
+        mrp: 999,
+        discount: "30% OFF",
+        image: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=500", // <-- Yahan apni photo ka path daalein
+        colors: ["Maroon", "Black"]
+    },
+    {
+        id: 4,
+        name: "Men Olive Solid Polo Neck Collar T-shirt",
+        price: 974,
+        mrp: 1299,
+        discount: "25% OFF",
+        image: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=500", // <-- Yahan apni photo ka path daalein
+        colors: ["Olive", "White"]
+    },
+    {
+        id: 5,
+        name: "Men Black Graphic Print Regular Fit Polo",
+        price: 979,
+        mrp: 1399,
+        discount: "30% OFF",
+        image: "https://images.unsplash.com/photo-1503341455253-b2bc71f093b1?w=500", // <-- Yahan apni photo ka path daalein
+        colors: ["Black", "Grey"]
+    },
+    {
+        id: 6,
+        name: "Men Light Blue Stripe Polo Neck T-shirt",
+        price: 1899,
+        mrp: 1999,
+        discount: "5% OFF",
+        image: "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=500", // <-- Yahan apni photo ka path daalein
+        colors: ["Light Blue", "Pink"]
+    }
 ];
 
-/* =========================
-DISPLAY & PART LOGIC
-========================= */
-let currentPart = 1;
-const itemsPerPage = 6;
+let cartList = [];
+let targetedProduct = null;
+let chosenColor = null;
+let chosenSize = null;
 
-function displayProducts(){
-const productsContainer=document.getElementById("productsContainer");
-productsContainer.innerHTML="";
-
-const startIndex = (currentPart - 1) * itemsPerPage;
-const endIndex = startIndex + itemsPerPage;
-const currentSelectionList = products.slice(startIndex, endIndex);
-
-currentSelectionList.forEach(product=>{
-productsContainer.innerHTML+=`
-<div class="card" onclick="openProduct(${product.id})">
-<img src="${product.image}">
-<div class="card-info">
-<div class="card-title">${product.name}</div>
-<div class="price-box">
-<span class="price">₹${product.price}</span>
-<span class="mrp">₹${product.mrp}</span>
-<span class="discount">${product.discount}</span>
-</div>
-<button class="small-btn">View Product</button>
-</div>
-</div>
-`;
-});
-
-document.getElementById("pageIndicator").innerText = `Part ${currentPart} of 2`;
-document.getElementById("prevBtn").disabled = (currentPart === 1);
-document.getElementById("nextBtn").disabled = (currentPart === 2);
+// PAGE ROUTER VIEW SHIFTER
+function showSection(id) {
+    document.getElementById("homePage").style.display = (id === "homePage") ? "block" : "none";
+    document.getElementById("productPage").style.display = (id === "productPage") ? "block" : "none";
+    document.getElementById("cartPage").style.display = (id === "cartPage") ? "block" : "none";
+    window.scrollTo({top: 0});
 }
 
-function changePart(direction) {
-currentPart += direction;
-displayProducts();
-window.scrollTo({top: 0, behavior: 'smooth'});
+// RENDER ALL DATA CARDS ON HOME SCREEN
+function renderStorefront(itemsToRender = products) {
+    const container = document.getElementById("mainProductsContainer");
+    container.innerHTML = "";
+    
+    if(itemsToRender.length === 0) {
+        container.innerHTML = "<p style='grid-column: span 2; text-align:center; padding:20px; color:#888;'>No matches found.</p>";
+        return;
+    }
+
+    itemsToRender.forEach(p => {
+        container.innerHTML += `
+            <div class="product-card" onclick="openProductDetail(${p.id})">
+                <img src="${p.image}" alt="apparel">
+                <div class="product-info">
+                    <div class="product-name">${p.name}</div>
+                    <div class="price-container">
+                        <span class="current-price">₹${p.price}</span>
+                        <span class="old-mrp">₹${p.mrp}</span>
+                        <span class="discount-tag">${p.discount}</span>
+                    </div>
+                    <button class="view-btn">View Product</button>
+                </div>
+            </div>
+        `;
+    });
+}
+renderStorefront();
+
+// SEARCH FILTER LOGIC
+function filterProducts() {
+    let query = document.getElementById("storeSearch").value.toLowerCase().trim();
+    let filtered = products.filter(p => p.name.toLowerCase().includes(query));
+    renderStorefront(filtered);
 }
 
-displayProducts();
-
-/* BANNER TIMER */
-let activeSlideIdx = 0;
+// AUTOMATIC BANNER AUTOMATION INTERVAL TRACKER
+let activePosterIdx = 0;
 setInterval(() => {
-document.getElementById(`slide${activeSlideIdx}`).classList.remove("active");
-activeSlideIdx = (activeSlideIdx + 1) % 3;
-document.getElementById(`slide${activeSlideIdx}`).classList.add("active");
+    document.getElementById(`bSlide${activePosterIdx}`).classList.remove("active");
+    activePosterIdx = (activePosterIdx + 1) % 3;
+    document.getElementById(`bSlide${activePosterIdx}`).classList.add("active");
 }, 4000);
 
-/* NAV FUNCTIONS */
-const homePage=document.getElementById("homePage");
-const productPage=document.getElementById("productPage");
-const cartPage=document.getElementById("cartPage");
+// OPEN PRODUCT INDIVIDUAL FULL CONTROL PAGE 
+function openProductDetail(id) {
+    let match = products.find(p => p.id === id);
+    targetedProduct = match;
+    
+    // Clear dynamic states
+    chosenColor = null;
+    chosenSize = null;
+    document.getElementById("alertWarnBox").style.display = "none";
+    
+    // Clear size active selected styles
+    document.querySelectorAll(".size-box-opt").forEach(b => b.classList.remove("selected"));
 
-let currentProduct=null;
-let selectedSizeValue=null;
-let selectedColorValue=null;
+    // Populate standard data fields
+    document.getElementById("viewProductImg").src = match.image;
+    document.getElementById("viewProductTitle").innerText = match.name;
+    document.getElementById("viewProductPrice").innerText = "₹" + match.price;
+    document.getElementById("viewProductMrp").innerText = "₹" + match.mrp;
 
-function goHome() {
-homePage.style.display="block";
-productPage.style.display="none";
-cartPage.style.display="none";
-closeCheckout();
+    // Build dynamic colors list dynamically
+    const colGroup = document.getElementById("viewColorGroup");
+    colGroup.innerHTML = "";
+    match.colors.forEach(c => {
+        colGroup.innerHTML += `<div class="opt-box color-box-opt" onclick="markSelection(this, 'color')">${c}</div>`;
+    });
+
+    showSection("productPage");
 }
 
-function selectColor(element) {
-const colorElements = document.querySelectorAll('.color-opt');
-colorElements.forEach(el => el.classList.remove('selected'));
-element.classList.add('selected');
-selectedColorValue = element.innerText;
-hideValidationError();
-}
-
-function selectSize(element) {
-const sizeElements = document.querySelectorAll('.size');
-sizeElements.forEach(el => el.classList.remove('selected'));
-element.classList.add('selected');
-selectedSizeValue = element.innerText;
-hideValidationError();
-}
-
-function resetSelections() {
-const sizeElements = document.querySelectorAll('.size');
-sizeElements.forEach(el => el.classList.remove('selected'));
-selectedSizeValue = null;
-selectedColorValue = null;
-hideValidationError();
-}
-
-function showValidationError() {
-document.getElementById("validationErrorMsg").style.display = "block";
-}
-
-function hideValidationError() {
-document.getElementById("validationErrorMsg").style.display = "none";
-}
-
-function openProduct(id){
-let product=products.find(p=>p.id===id);
-currentProduct=product;
-resetSelections();
-
-const colorContainer = document.getElementById("colorContainer");
-colorContainer.innerHTML = "";
-product.colors.forEach(col => {
-colorContainer.innerHTML += `<div class="color-opt" onclick="selectColor(this)">${col}</div>`;
-});
-
-document.getElementById("productImage").src=product.image;
-document.getElementById("productTitle").innerText=product.name;
-document.getElementById("productPrice").innerText="₹"+product.price;
-document.getElementById("productMrp").innerText="₹"+product.mrp;
-
-homePage.style.display="none";
-cartPage.style.display="none";
-productPage.style.display="block";
-window.scrollTo({top: 0, behavior: 'smooth'});
-}
-
-function goBack(){
-goHome();
-}
-
-/* CART CONTROLLER */
-let cart=[];
-
-function addCurrentToCart(){
-if(!selectedColorValue || !selectedSizeValue) {
-showValidationError();
-return;
-}
-let productToAdd = {
-...currentProduct,
-selectedSize: selectedSizeValue,
-selectedColor: selectedColorValue
-};
-cart.push(productToAdd);
-updateCart();
-goHome();
-}
-
-function openCart(){
-homePage.style.display="none";
-productPage.style.display="none";
-cartPage.style.display="block";
-updateCart();
-}
-
-function removeFromCart(index) {
-cart.splice(index, 1);
-updateCart();
-}
-
-function updateCart(){
-let cartItems=document.getElementById("cartItems");
-cartItems.innerHTML="";
-let total=0;
-
-if(cart.length === 0) {
-cartItems.innerHTML = "<p style='color:#666;'>Your cart layout is empty.</p>";
-document.getElementById("totalPrice").innerText="0";
-document.getElementById("cartCount").innerText="0";
-return;
-}
-
-cart.forEach((item, index)=>{
-total += item.price;
-cartItems.innerHTML += `
-<div class="cart-item">
-<div cla
+// TOGGLE HANDLERS FOR COLOR / SIZE BOX CHOSEN LAYOUTS
+function markSelection(element, type) {
+    document.getElementById("alertWarnBox").style.display = "none";
+    if(type === 'color') {
+        document.querySelectorAll(".color-box-opt").forEach(b => b.classList.remove("selected"));
+        element.classList.add("selected");
+        chosenColor = element.innerText;
+    } else {
+        document.querySelectorAll(".size-box-opt").forEach(b => b.classList.remove("selected"));
+        element.cla
