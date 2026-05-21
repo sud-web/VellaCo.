@@ -784,5 +784,143 @@ function openProductDetail(id) {
     const colGroup = document.getElementById("viewColorGroup");
     colGroup.innerHTML = "";
     match.colors.forEach(c => {
-        colGroup.innerHTML += `<div class="opt-box color-box-o
-        
+        colGroup.innerHTML += `<div class="opt-box color-box-opt" onclick="markSelection(this, 'color')">${c}</div>`;
+    });
+
+    showSection("productPage");
+}
+
+function markSelection(element, type) {
+    document.getElementById("alertWarnBox").style.display = "none";
+    if(type === 'color') {
+        document.querySelectorAll(".color-box-opt").forEach(b => b.classList.remove("selected"));
+        element.classList.add("selected");
+        chosenColor = element.innerText;
+    } else {
+        document.querySelectorAll(".size-box-opt").forEach(b => b.classList.remove("selected"));
+        element.classList.add("selected");
+        chosenSize = element.innerText;
+    }
+}
+
+function executeAddToCart() {
+    if(!chosenColor || !chosenSize) {
+        document.getElementById("alertWarnBox").style.display = "block";
+        return;
+    }
+    cartList.push({
+        ...targetedProduct,
+        colorPicked: chosenColor,
+        sizePicked: chosenSize
+    });
+    syncCartBadgeState();
+    showSection("homePage");
+}
+
+function executeBuyNow() {
+    if(!chosenColor || !chosenSize) {
+        document.getElementById("alertWarnBox").style.display = "block";
+        return;
+    }
+    cartList = [{
+        ...targetedProduct,
+        colorPicked: chosenColor,
+        sizePicked: chosenSize
+    }];
+    syncCartBadgeState();
+    openCartPage();
+}
+
+function syncCartBadgeState() {
+    document.getElementById("cartBadgeCount").innerText = cartList.length;
+}
+
+function openCartPage() {
+    showSection("cartPage");
+    const container = document.getElementById("cartItemsList");
+    container.innerHTML = "";
+    let aggregatedSum = 0;
+
+    if(cartList.length === 0) {
+        container.innerHTML = "<p style='color:#777; padding:10px 0;'>Your shopping cart layout list is currently empty.</p>";
+        document.getElementById("cartTotalPrice").innerText = "0";
+        return;
+    }
+
+    cartList.forEach((item, index) => {
+        aggregatedSum += item.price;
+        container.innerHTML += `
+            <div class="cart-item">
+                <div class="cart-item-left">
+                    <img src="${item.image}" alt="item">
+                    <div class="cart-item-info">
+                        <h4>${item.name}</h4>
+                        <p>Variant: ${item.colorPicked} | Size: ${item.sizePicked}</p>
+                        <p style="font-weight:700; color:#111; margin-top:2px;">₹${item.price}</p>
+                    </div>
+                </div>
+                <button class="remove-item-btn" onclick="removeItemFromCart(${index})">🗑️</button>
+            </div>
+        `;
+    });
+    document.getElementById("cartTotalPrice").innerText = aggregatedSum;
+}
+
+function removeItemFromCart(index) {
+    cartList.splice(index, 1);
+    syncCartBadgeState();
+    openCartPage();
+}
+
+function openCheckoutModal() {
+    if(cartList.length === 0) return;
+    document.getElementById("checkoutModal").style.display = "block";
+}
+
+function closeCheckoutModal() {
+    document.getElementById("checkoutModal").style.display = "none";
+}
+
+/* FIXED: Closes modal smoothly when user clicks the background dark overlay area */
+function closeModalOutside(e) {
+    if(e.target === document.getElementById("checkoutModal")) {
+        closeCheckoutModal();
+    }
+}
+
+function dispatchToWhatsApp() {
+    let name = document.getElementById("custName").value.trim();
+    let phone = document.getElementById("custMobile").value.trim();
+    let addr = document.getElementById("custAddress").value.trim();
+    let gen = document.getElementById("custGender").value;
+    let state = document.getElementById("custState").value;
+
+    if(!name || !phone || !addr) {
+        alert("Please complete Name, Mobile, and Address text fields correctly!");
+        return;
+    }
+
+    let productStrings = "";
+    cartList.forEach((item, index) => {
+        productStrings += `${index + 1}. ${item.name}%0A   [Variant: ${item.colorPicked}, Size: ${item.sizePicked}] - ₹${item.price}%0A`;
+    });
+
+    let finalBill = document.getElementById("cartTotalPrice").innerText;
+    let targetWhatsAppNum = "919999999999"; 
+
+    let fullWhatsAppMessageText = 
+        "🛒 *NEW APP ORDER - VELLA CO.* %0A%0A" +
+        "👤 *Customer Contact Details:*%0A" +
+        "• Name: " + name + "%0A" +
+        "• Contact Phone: " + phone + "%0A" +
+        "• Gender Profile: " + gen + "%0A" +
+        "• Region State: " + state + "%0A" +
+        "• Address: " + addr + "%0A%0A" +
+        "🛍 *Product Cart Specifications:*%0A" + productStrings + "%0A" +
+        "💰 *Total Grand Final Bill:* ₹" + finalBill;
+
+    window.open("https://wa.me/" + targetWhatsAppNum + "?text=" + fullWhatsAppMessageText, "_blank");
+}
+</script>
+</body>
+</html>
