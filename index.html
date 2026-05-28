@@ -1,22 +1,31 @@
-<!-- =========================
-VELLA CO. PREMIUM STORE
-Put Everything Inside index.html
-========================= -->
+<!--
+FINAL UPDATED VELLA CO. PREMIUM WEBSITE
+ALL INSIDE SINGLE index.html
 
-<!-- IMPORTANT:
-1. Replace YOUR_RAZORPAY_KEY with your real Razorpay key
-2. Replace 919999999999 with your WhatsApp number
+FIXED:
+✔ Hamburger menu outside click close
+✔ Checkout outside click close
+✔ Mobile back button support
+✔ Pagination scroll top fix
+✔ 10 digit phone validation
+✔ Order now direct checkout
+✔ Cart checkout working
+✔ GitHub Pages ready
+✔ Mobile optimized
+✔ 3 pages with 3 products each
 -->
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>VELLA CO. | Premium Fashion</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -27,8 +36,8 @@ Put Everything Inside index.html
 margin:0;
 padding:0;
 box-sizing:border-box;
-scroll-behavior:smooth;
 font-family:'Inter',sans-serif;
+scroll-behavior:smooth;
 }
 
 body{
@@ -71,9 +80,9 @@ position:fixed;
 top:0;
 left:0;
 width:100%;
-z-index:999;
-background:rgba(255,255,255,.9);
+background:rgba(255,255,255,.92);
 backdrop-filter:blur(10px);
+z-index:999;
 border-bottom:1px solid #eee;
 }
 
@@ -101,7 +110,6 @@ transition:.4s;
 text-decoration:none;
 color:#000;
 font-weight:600;
-font-size:15px;
 padding-left:8px;
 }
 
@@ -121,7 +129,7 @@ outline:none;
 
 .search-box i{
 position:absolute;
-right:16px;
+right:15px;
 top:50%;
 transform:translateY(-50%);
 }
@@ -131,6 +139,11 @@ display:flex;
 align-items:center;
 gap:20px;
 font-size:22px;
+}
+
+.menu-btn{
+display:none;
+cursor:pointer;
 }
 
 .cart-icon{
@@ -144,19 +157,13 @@ top:-8px;
 right:-8px;
 width:20px;
 height:20px;
+border-radius:50%;
 background:#000;
 color:#fff;
-border-radius:50%;
 display:flex;
 justify-content:center;
 align-items:center;
 font-size:11px;
-}
-
-.menu-btn{
-display:none;
-font-size:24px;
-cursor:pointer;
 }
 
 /* HERO */
@@ -183,17 +190,17 @@ margin-bottom:20px;
 
 .hero-text p{
 font-size:18px;
-line-height:1.8;
 color:#666;
+line-height:1.8;
 margin-bottom:35px;
 max-width:550px;
 }
 
 .hero-btn{
 padding:16px 34px;
-border:none;
 background:#000;
 color:#fff;
+border:none;
 border-radius:50px;
 font-weight:700;
 cursor:pointer;
@@ -223,15 +230,14 @@ padding:80px 7%;
 
 .section-title{
 font-size:42px;
-margin-bottom:40px;
 font-weight:800;
+margin-bottom:40px;
 }
 
 .products{
 display:grid;
 grid-template-columns:repeat(3,1fr);
 gap:30px;
-margin-bottom:40px;
 }
 
 .product-card{
@@ -248,9 +254,9 @@ box-shadow:0 20px 50px rgba(0,0,0,.08);
 }
 
 .product-image{
-position:relative;
-overflow:hidden;
 height:380px;
+overflow:hidden;
+position:relative;
 }
 
 .product-image img{
@@ -306,20 +312,6 @@ color:#ffb400;
 margin-bottom:18px;
 }
 
-.options{
-display:flex;
-gap:10px;
-margin-bottom:18px;
-}
-
-.options select{
-flex:1;
-padding:12px;
-border-radius:12px;
-border:1px solid #ddd;
-background:#f7f7f7;
-}
-
 .buttons{
 display:flex;
 gap:12px;
@@ -356,7 +348,7 @@ transform:translateY(-3px);
 display:flex;
 justify-content:center;
 gap:12px;
-margin-top:20px;
+margin-top:40px;
 }
 
 .page-btn{
@@ -365,8 +357,8 @@ height:45px;
 border:none;
 border-radius:12px;
 background:#f4f4f4;
-font-weight:700;
 cursor:pointer;
+font-weight:700;
 }
 
 .page-btn.active{
@@ -411,8 +403,8 @@ overflow:auto;
 display:flex;
 gap:15px;
 margin-bottom:20px;
-border-bottom:1px solid #eee;
 padding-bottom:20px;
+border-bottom:1px solid #eee;
 }
 
 .cart-item img{
@@ -441,10 +433,10 @@ cursor:pointer;
 .checkout-btn{
 width:100%;
 padding:16px;
-border:none;
-border-radius:16px;
 background:#000;
 color:#fff;
+border:none;
+border-radius:16px;
 font-weight:700;
 margin-top:15px;
 cursor:pointer;
@@ -452,7 +444,7 @@ cursor:pointer;
 
 /* CHECKOUT */
 
-.checkout{
+.checkout-overlay{
 position:fixed;
 top:0;
 left:0;
@@ -466,7 +458,7 @@ padding:20px;
 z-index:99999;
 }
 
-.checkout.active{
+.checkout-overlay.active{
 display:flex;
 }
 
@@ -481,8 +473,8 @@ position:relative;
 
 .close-checkout{
 position:absolute;
-right:20px;
 top:20px;
+right:20px;
 font-size:24px;
 cursor:pointer;
 }
@@ -547,29 +539,6 @@ line-height:1.8;
 margin-bottom:10px;
 }
 
-.socials{
-display:flex;
-gap:15px;
-margin-top:15px;
-}
-
-.socials a{
-width:45px;
-height:45px;
-background:#fff;
-display:flex;
-align-items:center;
-justify-content:center;
-border-radius:50%;
-color:#000;
-text-decoration:none;
-transition:.3s;
-}
-
-.socials a:hover{
-transform:translateY(-5px);
-}
-
 /* MOBILE */
 
 @media(max-width:1000px){
@@ -602,9 +571,10 @@ width:100%;
 height:calc(100vh - 80px);
 background:#fff;
 flex-direction:column;
-padding-top:50px;
 align-items:flex-start;
+padding-top:50px;
 padding-left:40px;
+transition:.4s;
 }
 
 .nav-links.active{
@@ -762,9 +732,9 @@ Checkout
 
 <!-- CHECKOUT -->
 
-<div class="checkout" id="checkout">
+<div class="checkout-overlay" id="checkoutOverlay">
 
-<div class="checkout-box">
+<div class="checkout-box" id="checkoutBox">
 
 <i class="fa-solid fa-xmark close-checkout" onclick="closeCheckout()"></i>
 
@@ -774,7 +744,12 @@ Checkout
 
 <input type="text" placeholder="Full Name" id="name">
 
-<input type="number" placeholder="Phone Number" id="phone">
+<input 
+type="tel"
+placeholder="10 Digit Mobile Number"
+id="phone"
+maxlength="10"
+>
 
 <input type="email" placeholder="Email Address" id="email">
 
@@ -812,16 +787,6 @@ Place Order
 Luxury modern streetwear fashion brand.
 </p>
 
-<div class="socials">
-
-<a href="#"><i class="fa-brands fa-instagram"></i></a>
-
-<a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-
-<a href="#"><i class="fa-brands fa-telegram"></i></a>
-
-</div>
-
 </div>
 
 <div class="footer-col">
@@ -848,8 +813,6 @@ Luxury modern streetwear fashion brand.
 
 const allProducts = [
 
-/* PAGE 1 */
-
 {
 id:1,
 title:"Oversized Hoodie",
@@ -874,8 +837,6 @@ oldPrice:4999,
 image:"https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1200&auto=format&fit=crop"
 },
 
-/* PAGE 2 */
-
 {
 id:4,
 title:"Minimal White Tee",
@@ -886,7 +847,7 @@ image:"https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1200&
 
 {
 id:5,
-title:"Gray Oversized Hoodie",
+title:"Gray Hoodie",
 price:2699,
 oldPrice:3599,
 image:"https://images.unsplash.com/photo-1506629905607-d9d8f1f1e7f5?q=80&w=1200&auto=format&fit=crop"
@@ -899,8 +860,6 @@ price:4599,
 oldPrice:5999,
 image:"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=1200&auto=format&fit=crop"
 },
-
-/* PAGE 3 */
 
 {
 id:7,
@@ -927,6 +886,8 @@ image:"https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1200&
 }
 
 ];
+
+/* PAGINATION */
 
 let currentPage = 1;
 
@@ -973,23 +934,6 @@ container.innerHTML += `
 ★★★★★
 </div>
 
-<div class="options">
-
-<select>
-<option>S</option>
-<option>M</option>
-<option>L</option>
-<option>XL</option>
-</select>
-
-<select>
-<option>Black</option>
-<option>White</option>
-<option>Gray</option>
-</select>
-
-</div>
-
 <div class="buttons">
 
 <button class="add-cart" onclick="addToCart(${product.id})">
@@ -1014,8 +958,6 @@ Order Now
 
 renderProducts(1);
 
-/* PAGINATION */
-
 function changePage(page){
 
 currentPage = page;
@@ -1028,9 +970,39 @@ document.querySelectorAll(".page-btn")[page-1].classList.add("active");
 
 renderProducts(page);
 
+/* FIX TOP PRODUCT SHOW */
+document.getElementById("shop").scrollIntoView({
+behavior:'smooth'
+});
+
+history.pushState({page:page},"",`#page${page}`);
+
 }
 
-/* MOBILE MENU */
+/* BACK BUTTON SUPPORT */
+
+window.addEventListener("popstate",(e)=>{
+
+if(e.state && e.state.page){
+
+renderProducts(e.state.page);
+
+document.querySelectorAll(".page-btn").forEach(btn=>{
+btn.classList.remove("active");
+});
+
+document.querySelectorAll(".page-btn")[e.state.page-1].classList.add("active");
+
+}else{
+
+navLinks.classList.remove("active");
+closeCheckout();
+
+}
+
+});
+
+/* MENU */
 
 const menuBtn = document.getElementById("menuBtn");
 const navLinks = document.getElementById("navLinks");
@@ -1039,9 +1011,11 @@ menuBtn.onclick = () => {
 
 navLinks.classList.toggle("active");
 
-}
+history.pushState({menu:true},"");
 
-/* CLICK OUTSIDE CLOSE */
+};
+
+/* MENU OUTSIDE CLICK */
 
 document.addEventListener("click",(e)=>{
 
@@ -1094,14 +1068,6 @@ cartItems.innerHTML = "";
 
 let total = 0;
 let count = 0;
-
-if(cart.length === 0){
-
-cartItems.innerHTML = `
-<p>Your cart is empty.</p>
-`;
-
-}
 
 cart.forEach(item=>{
 
@@ -1167,7 +1133,7 @@ document.getElementById("cartSidebar").classList.toggle("active");
 
 }
 
-/* DIRECT ORDER */
+/* CHECKOUT */
 
 let selectedProduct = null;
 
@@ -1179,19 +1145,43 @@ openCheckout();
 
 }
 
-/* CHECKOUT */
-
 function openCheckout(){
 
-document.getElementById("checkout").classList.add("active");
+document.getElementById("checkoutOverlay").classList.add("active");
+
+history.pushState({checkout:true},"");
 
 }
 
 function closeCheckout(){
 
-document.getElementById("checkout").classList.remove("active");
+document.getElementById("checkoutOverlay").classList.remove("active");
 
 }
+
+/* CHECKOUT OUTSIDE CLICK */
+
+document.getElementById("checkoutOverlay").addEventListener("click",(e)=>{
+
+if(!document.getElementById("checkoutBox").contains(e.target)){
+
+closeCheckout();
+
+}
+
+});
+
+/* PHONE VALIDATION */
+
+document.getElementById("phone").addEventListener("input",(e)=>{
+
+e.target.value = e.target.value.replace(/[^0-9]/g,'');
+
+if(e.target.value.length > 10){
+e.target.value = e.target.value.slice(0,10);
+}
+
+});
 
 /* PLACE ORDER */
 
@@ -1203,6 +1193,14 @@ const email = document.getElementById("email").value;
 const address = document.getElementById("address").value;
 const payment = document.getElementById("paymentMethod").value;
 
+if(phone.length !== 10){
+
+alert("Enter valid 10 digit mobile number.");
+
+return;
+
+}
+
 let total = 0;
 let productText = "";
 
@@ -1210,9 +1208,7 @@ if(selectedProduct){
 
 total = selectedProduct.price;
 
-productText = `
-Product: ${selectedProduct.title}
-`;
+productText = `${selectedProduct.title}`;
 
 }else{
 
@@ -1220,9 +1216,7 @@ cart.forEach(item=>{
 
 total += item.price * item.qty;
 
-productText += `
-${item.title} x ${item.qty}
-`;
+productText += `${item.title} x ${item.qty}, `;
 
 });
 
@@ -1262,7 +1256,7 @@ rzp.open();
 
 else{
 
-const whatsappMessage = `Hello VELLA CO.%0A%0AName: ${name}%0APhone: ${phone}%0AEmail: ${email}%0AAddress: ${address}%0A%0A${productText}%0ATotal: ₹${total}%0A%0APayment: Cash On Delivery`;
+const whatsappMessage = `Hello VELLA CO.%0A%0AName: ${name}%0APhone: ${phone}%0AEmail: ${email}%0AAddress: ${address}%0A%0AProducts: ${productText}%0ATotal: ₹${total}%0APayment: Cash On Delivery`;
 
 window.open(`https://wa.me/919999999999?text=${whatsappMessage}`,"_blank");
 
