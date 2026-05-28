@@ -1043,12 +1043,14 @@ navLinks.classList.toggle("active");
 
 document.addEventListener("click",(e)=>{
 
-if(
-!navLinks.contains(e.target) &&
-!menuBtn.contains(e.target)
-){
+const isMenuClick =
+navLinks.contains(e.target) || menuBtn.contains(e.target);
+
+if(!isMenuClick){
 navLinks.classList.remove("active");
 }
+
+});
 
 if(
 e.target.id === "checkout"
