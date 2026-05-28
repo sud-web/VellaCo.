@@ -1378,7 +1378,17 @@ alert("Added to Cart");
 function addDetailsToCart(){
 
 const size = document.getElementById("detailsSize").value;
-const qty = parseInt(document.getElementById("detailsQty").value);
+
+let qty = parseInt(document.getElementById("detailsQty").value);
+
+if(qty > 5){
+qty = 5;
+alert("Maximum 5 products allowed.");
+}
+
+if(qty < 1){
+qty = 1;
+}
 
 addToCart(selectedProduct.id,size,qty);
 
