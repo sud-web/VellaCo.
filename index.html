@@ -5,80 +5,46 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VELLA CO. | Premium Streetwear</title>
 
-<meta name="description" content="VELLA CO. Premium Luxury Streetwear Fashion Brand">
-<meta name="keywords" content="VELLA CO, streetwear, premium clothing, fashion">
+<meta name="description" content="VELLA CO. Premium Fashion Brand">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
 <style>
-
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:'Inter',sans-serif;
-scroll-behavior:smooth;
 }
 
 :root{
---bg:#ffffff;
---text:#000000;
---card:#f7f7f7;
+--bg:#fff;
+--text:#000;
+--card:#f5f5f5;
 --border:#e5e5e5;
---shadow:0 15px 40px rgba(0,0,0,0.08);
-}
-
-body.dark{
---bg:#0c0c0c;
---text:#ffffff;
---card:#141414;
---border:#232323;
---shadow:0 15px 40px rgba(255,255,255,0.05);
 }
 
 body{
 background:var(--bg);
 color:var(--text);
 overflow-x:hidden;
-transition:.4s;
 }
 
-/* LOADER */
-
-.loader{
-position:fixed;
-inset:0;
-background:white;
-z-index:999999;
-display:flex;
-align-items:center;
-justify-content:center;
-transition:1s;
+body.dark{
+--bg:#0a0a0a;
+--text:#fff;
+--card:#141414;
+--border:#222;
 }
-
-.loader h1{
-font-size:4rem;
-letter-spacing:8px;
-animation:pulse 1.2s infinite;
-}
-
-@keyframes pulse{
-50%{opacity:.4;}
-}
-
-/* NAVBAR */
 
 header{
 position:sticky;
 top:0;
-z-index:999;
+background:rgba(255,255,255,.9);
 backdrop-filter:blur(20px);
-background:rgba(255,255,255,.8);
+z-index:999;
 border-bottom:1px solid var(--border);
 }
 
@@ -87,24 +53,22 @@ background:rgba(0,0,0,.8);
 }
 
 .navbar{
-max-width:1450px;
-margin:auto;
-padding:18px 30px;
 display:flex;
 align-items:center;
 justify-content:space-between;
+padding:18px 5%;
 gap:20px;
 }
 
 .logo{
 font-size:1.8rem;
 font-weight:900;
-letter-spacing:5px;
+letter-spacing:4px;
 }
 
 .nav-links{
 display:flex;
-gap:30px;
+gap:25px;
 list-style:none;
 }
 
@@ -116,18 +80,18 @@ font-weight:500;
 
 .search{
 flex:1;
-max-width:500px;
+max-width:450px;
 position:relative;
 }
 
 .search input{
 width:100%;
 padding:14px 18px 14px 45px;
-border-radius:50px;
 border:none;
 background:var(--card);
-color:var(--text);
+border-radius:50px;
 outline:none;
+color:var(--text);
 }
 
 .search i{
@@ -141,7 +105,6 @@ transform:translateY(-50%);
 display:flex;
 align-items:center;
 gap:20px;
-font-size:1.2rem;
 }
 
 .cart-icon{
@@ -151,34 +114,26 @@ cursor:pointer;
 
 .cart-count{
 position:absolute;
-top:-10px;
 right:-10px;
-background:black;
-color:white;
+top:-10px;
 width:20px;
 height:20px;
 border-radius:50%;
-font-size:12px;
+background:black;
+color:white;
+font-size:11px;
 display:flex;
 align-items:center;
 justify-content:center;
 }
-
-.menu-btn{
-display:none;
-font-size:1.4rem;
-cursor:pointer;
-}
-
-/* HERO */
 
 .hero{
 min-height:100vh;
 display:grid;
 grid-template-columns:1fr 1fr;
 align-items:center;
-padding:60px 8%;
-gap:60px;
+padding:60px 7%;
+gap:50px;
 }
 
 .hero h1{
@@ -189,37 +144,27 @@ margin-bottom:20px;
 
 .hero p{
 font-size:1.1rem;
-max-width:500px;
-line-height:1.7;
+line-height:1.8;
 color:gray;
-margin-bottom:35px;
+margin-bottom:30px;
 }
 
 .btn{
-padding:16px 35px;
+padding:16px 34px;
 border:none;
+border-radius:50px;
 background:black;
 color:white;
-border-radius:50px;
 font-size:15px;
 cursor:pointer;
-transition:.3s;
-position:relative;
-overflow:hidden;
-}
-
-.btn:hover{
-transform:translateY(-5px);
 }
 
 .hero img{
 width:100%;
-border-radius:35px;
+border-radius:30px;
+height:90vh;
 object-fit:cover;
-box-shadow:var(--shadow);
 }
-
-/* SECTION */
 
 .section{
 padding:90px 7%;
@@ -228,41 +173,7 @@ padding:90px 7%;
 .section-title{
 font-size:2.7rem;
 margin-bottom:40px;
-font-weight:800;
 }
-
-/* SLIDER */
-
-.slider{
-display:flex;
-overflow:auto;
-gap:25px;
-scrollbar-width:none;
-}
-
-.slide{
-min-width:300px;
-background:var(--card);
-border-radius:25px;
-overflow:hidden;
-transition:.4s;
-}
-
-.slide:hover{
-transform:translateY(-10px);
-}
-
-.slide img{
-width:100%;
-height:350px;
-object-fit:cover;
-}
-
-.slide div{
-padding:20px;
-}
-
-/* FILTER */
 
 .filters{
 display:flex;
@@ -272,42 +183,33 @@ margin-bottom:40px;
 }
 
 .filters select{
-padding:12px 16px;
+padding:14px 16px;
 border:none;
-background:var(--card);
 border-radius:12px;
+background:var(--card);
 color:var(--text);
 }
-
-/* PRODUCTS */
 
 .products{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:30px;
+gap:25px;
 }
 
 .product{
-background:rgba(255,255,255,.5);
-backdrop-filter:blur(15px);
-border:1px solid var(--border);
+background:var(--card);
 border-radius:28px;
 overflow:hidden;
 transition:.4s;
 position:relative;
 }
 
-body.dark .product{
-background:rgba(0,0,0,.4);
-}
-
 .product:hover{
 transform:translateY(-10px);
-box-shadow:var(--shadow);
 }
 
 .product-img{
-height:350px;
+height:340px;
 overflow:hidden;
 position:relative;
 }
@@ -316,7 +218,7 @@ position:relative;
 width:100%;
 height:100%;
 object-fit:cover;
-transition:.5s;
+transition:.4s;
 }
 
 .product:hover img{
@@ -332,17 +234,16 @@ color:white;
 padding:8px 14px;
 border-radius:40px;
 font-size:12px;
-font-weight:600;
 }
 
 .wishlist{
 position:absolute;
 top:15px;
 right:15px;
-width:42px;
-height:42px;
-background:white;
+width:40px;
+height:40px;
 border-radius:50%;
+background:white;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -353,15 +254,11 @@ cursor:pointer;
 padding:22px;
 }
 
-.info h3{
-margin-bottom:10px;
-}
-
 .price{
 display:flex;
-gap:10px;
 align-items:center;
-margin-bottom:15px;
+gap:10px;
+margin:15px 0;
 }
 
 .old{
@@ -382,11 +279,10 @@ margin-bottom:15px;
 
 .options select{
 flex:1;
-padding:10px;
+padding:12px;
 border:none;
-background:var(--card);
-border-radius:10px;
-color:var(--text);
+background:white;
+border-radius:12px;
 }
 
 .actions{
@@ -396,12 +292,10 @@ gap:10px;
 
 .actions button{
 flex:1;
-padding:12px;
+padding:13px;
 border:none;
-border-radius:12px;
+border-radius:14px;
 cursor:pointer;
-font-weight:600;
-transition:.3s;
 }
 
 .add{
@@ -410,134 +304,24 @@ color:white;
 }
 
 .view{
-background:var(--card);
-color:var(--text);
+background:white;
 }
-
-.actions button:hover{
-transform:translateY(-3px);
-}
-
-/* FEATURE */
-
-.feature{
-background:url('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1600&auto=format&fit=crop') center/cover;
-padding:120px 60px;
-border-radius:40px;
-position:relative;
-overflow:hidden;
-color:white;
-}
-
-.feature::before{
-content:'';
-position:absolute;
-inset:0;
-background:rgba(0,0,0,.5);
-}
-
-.feature-content{
-position:relative;
-z-index:2;
-max-width:600px;
-}
-
-.feature h2{
-font-size:4rem;
-margin-bottom:20px;
-}
-
-/* TESTIMONIAL */
-
-.testimonials{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:25px;
-}
-
-.testimonial{
-background:var(--card);
-padding:30px;
-border-radius:25px;
-}
-
-/* FAQ */
-
-.faq{
-border-bottom:1px solid var(--border);
-padding:20px 0;
-cursor:pointer;
-}
-
-.answer{
-max-height:0;
-overflow:hidden;
-transition:.4s;
-color:gray;
-}
-
-.faq.active .answer{
-max-height:200px;
-padding-top:15px;
-}
-
-/* FOOTER */
-
-footer{
-padding:70px 7%;
-background:var(--card);
-margin-top:100px;
-}
-
-.footer-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:40px;
-}
-
-.socials{
-display:flex;
-gap:15px;
-margin-top:20px;
-}
-
-.socials a{
-width:45px;
-height:45px;
-background:black;
-color:white;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-text-decoration:none;
-}
-
-/* CART */
 
 .cart{
 position:fixed;
+right:-420px;
 top:0;
-right:-450px;
-width:420px;
+width:400px;
 height:100vh;
 background:var(--bg);
-box-shadow:-10px 0 30px rgba(0,0,0,.1);
 z-index:9999;
-transition:.4s;
 padding:25px;
-display:flex;
-flex-direction:column;
+transition:.4s;
+overflow:auto;
 }
 
 .cart.active{
 right:0;
-}
-
-.cart-items{
-flex:1;
-overflow:auto;
-margin-top:25px;
 }
 
 .cart-item{
@@ -545,14 +329,14 @@ display:flex;
 gap:15px;
 background:var(--card);
 padding:12px;
-border-radius:20px;
-margin-bottom:20px;
+border-radius:18px;
+margin-bottom:15px;
 }
 
 .cart-item img{
 width:90px;
 height:90px;
-border-radius:15px;
+border-radius:12px;
 object-fit:cover;
 }
 
@@ -567,9 +351,9 @@ margin-top:10px;
 width:28px;
 height:28px;
 border:none;
+border-radius:50%;
 background:black;
 color:white;
-border-radius:50%;
 cursor:pointer;
 }
 
@@ -577,16 +361,15 @@ cursor:pointer;
 width:100%;
 padding:16px;
 border:none;
+border-radius:15px;
 background:black;
 color:white;
-border-radius:15px;
 margin-top:20px;
 cursor:pointer;
 }
 
-/* MODAL */
-
-.modal{
+.modal,
+.checkout-page{
 position:fixed;
 inset:0;
 background:rgba(0,0,0,.6);
@@ -597,14 +380,16 @@ padding:20px;
 z-index:99999;
 }
 
-.modal.active{
+.modal.active,
+.checkout-page.active{
 display:flex;
 }
 
-.modal-box{
+.modal-box,
+.checkout-box{
 background:var(--bg);
 width:100%;
-max-width:1100px;
+max-width:1000px;
 border-radius:30px;
 overflow:hidden;
 display:grid;
@@ -617,106 +402,82 @@ height:100%;
 object-fit:cover;
 }
 
-.modal-content{
-padding:40px;
-max-height:90vh;
-overflow:auto;
-}
-
-/* CHECKOUT */
-
-.checkout-page{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.6);
-display:none;
-align-items:center;
-justify-content:center;
-padding:20px;
-z-index:999999;
-}
-
-.checkout-page.active{
-display:flex;
-}
-
+.modal-content,
 .checkout-box{
-width:100%;
-max-width:900px;
-background:var(--bg);
 padding:40px;
-border-radius:30px;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:30px;
 }
 
 .checkout-box input,
 .checkout-box textarea,
 .checkout-box select{
 width:100%;
-padding:14px;
+padding:16px;
 margin-top:12px;
 border:none;
 background:var(--card);
-border-radius:12px;
+border-radius:14px;
 color:var(--text);
 }
 
-/* FLOAT */
-
-.float-wa{
-position:fixed;
-bottom:90px;
-right:20px;
-width:55px;
-height:55px;
-border-radius:50%;
-background:#25D366;
-display:flex;
-align-items:center;
-justify-content:center;
-color:white;
-font-size:22px;
-z-index:999;
+footer{
+padding:70px 7%;
+background:var(--card);
+margin-top:80px;
 }
 
-.top{
-position:fixed;
-bottom:20px;
-right:20px;
-width:55px;
-height:55px;
-border-radius:50%;
+.socials{
+display:flex;
+gap:15px;
+margin-top:20px;
+}
+
+.socials a{
+width:45px;
+height:45px;
 background:black;
 color:white;
 display:flex;
 align-items:center;
 justify-content:center;
+border-radius:50%;
+text-decoration:none;
+}
+
+.float-wa{
+position:fixed;
+right:20px;
+bottom:90px;
+width:55px;
+height:55px;
+border-radius:50%;
+background:#25D366;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:22px;
+}
+
+.top{
+position:fixed;
+right:20px;
+bottom:20px;
+width:55px;
+height:55px;
+background:black;
+color:white;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
 cursor:pointer;
-z-index:999;
 }
-
-/* REVEAL */
-
-.reveal{
-opacity:0;
-transform:translateY(50px);
-transition:1s;
-}
-
-.reveal.active{
-opacity:1;
-transform:translateY(0);
-}
-
-/* MOBILE */
 
 @media(max-width:900px){
-
-.hero{
+.hero,
+.modal-box,
+.checkout-box{
 grid-template-columns:1fr;
-text-align:center;
 }
 
 .hero h1{
@@ -724,577 +485,223 @@ font-size:3.5rem;
 }
 
 .nav-links{
-position:fixed;
-top:80px;
-left:-100%;
-width:100%;
-height:calc(100vh - 80px);
-background:var(--bg);
-flex-direction:column;
-padding:40px;
-transition:.4s;
-}
-
-.nav-links.active{
-left:0;
-}
-
-.menu-btn{
-display:block;
+display:none;
 }
 
 .search{
 display:none;
 }
 
-.modal-box,
-.checkout-box{
-grid-template-columns:1fr;
-}
-
 .cart{
 width:100%;
 }
-
-.feature h2{
-font-size:2.5rem;
 }
-
-}
-
 </style>
 </head>
 <body>
 
-<div class="loader">
-<h1>VELLA CO.</h1>
-</div>
-
 <header>
-
 <nav class="navbar">
-
 <div class="logo">VELLA CO.</div>
 
 <ul class="nav-links">
 <li><a href="#">Home</a></li>
 <li><a href="#shop">Shop</a></li>
-<li><a href="#new">New Arrivals</a></li>
-<li><a href="#collections">Collections</a></li>
 <li><a href="#contact">Contact</a></li>
 </ul>
 
 <div class="search">
 <i class="fa fa-search"></i>
-<input type="text" id="searchInput" placeholder="Search premium fashion">
+<input type="text" id="searchInput" placeholder="Search fashion">
 </div>
 
 <div class="nav-icons">
-
 <i class="fa fa-moon" id="themeBtn"></i>
-
 <div class="cart-icon" id="cartBtn">
 <i class="fa fa-shopping-bag"></i>
 <div class="cart-count" id="cartCount">0</div>
 </div>
-
-<div class="menu-btn" id="menuBtn">
-<i class="fa fa-bars"></i>
 </div>
-
-</div>
-
 </nav>
-
 </header>
 
 <section class="hero">
-
 <div>
-
 <h1>VELLA CO.</h1>
-
-<p>
-Minimal Streetwear Collection crafted for the luxury generation.
-</p>
-
-<button class="btn" onclick="document.getElementById('shop').scrollIntoView()">
-Shop Now
-</button>
-
+<p>Minimal Streetwear Collection crafted for premium fashion lovers.</p>
+<button class="btn" onclick="document.getElementById('shop').scrollIntoView()">Shop Now</button>
 </div>
-
 <div>
-<img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=1400&auto=format&fit=crop">
+<img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=1200&auto=format&fit=crop">
 </div>
-
 </section>
 
-<section class="section reveal">
-
-<h2 class="section-title">Trending Now</h2>
-
-<div class="slider">
-
-<div class="slide">
-<img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1200&auto=format&fit=crop">
-<div>
-<h3>Urban Oversized</h3>
-<p>Luxury monochrome collection.</p>
-</div>
-</div>
-
-<div class="slide">
-<img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1200&auto=format&fit=crop">
-<div>
-<h3>Street Essentials</h3>
-<p>Minimal premium fashion.</p>
-</div>
-</div>
-
-<div class="slide">
-<img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1200&auto=format&fit=crop">
-<div>
-<h3>Luxury Jackets</h3>
-<p>Modern oversized fits.</p>
-</div>
-</div>
-
-</div>
-
-</section>
-
-<section class="section reveal" id="shop">
-
+<section class="section" id="shop">
 <h2 class="section-title">Premium Collection</h2>
 
 <div class="filters">
-
 <select id="categoryFilter">
-<option value="all">All Categories</option>
-<option value="hoodie">Hoodies</option>
-<option value="tshirt">T-Shirts</option>
-<option value="jacket">Jackets</option>
+<option value="all">All</option>
+<option value="hoodie">Hoodie</option>
+<option value="tshirt">T-Shirt</option>
+<option value="jacket">Jacket</option>
 </select>
-
-<select id="sortFilter">
-<option value="default">Sort</option>
-<option value="low">Low to High</option>
-<option value="high">High to Low</option>
-</select>
-
 </div>
 
 <div class="products" id="products"></div>
-
-</section>
-
-<section class="section reveal" id="collections">
-
-<div class="feature">
-
-<div class="feature-content">
-
-<h2>NEW DROP 2026</h2>
-
-<p>
-Luxury oversized silhouettes crafted with premium aesthetics.
-</p>
-
-<br>
-
-<button class="btn">Explore Collection</button>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="section reveal">
-
-<h2 class="section-title">Testimonials</h2>
-
-<div class="testimonials">
-
-<div class="testimonial">
-<h3>Luxury Feel</h3>
-<br>
-<p>
-“Feels like an international premium streetwear brand.”
-</p>
-</div>
-
-<div class="testimonial">
-<h3>Perfect Fit</h3>
-<br>
-<p>
-“Best oversized fit and premium fabric quality.”
-</p>
-</div>
-
-<div class="testimonial">
-<h3>Fast Delivery</h3>
-<br>
-<p>
-“Packaging and delivery experience was amazing.”
-</p>
-</div>
-
-</div>
-
-</section>
-
-<section class="section reveal">
-
-<h2 class="section-title">FAQs</h2>
-
-<div class="faq">
-<h3>How long does delivery take?</h3>
-<div class="answer">
-3-7 business days across India.
-</div>
-</div>
-
-<div class="faq">
-<h3>Is COD available?</h3>
-<div class="answer">
-Yes, Cash on Delivery is available.
-</div>
-</div>
-
-<div class="faq">
-<h3>Can I return products?</h3>
-<div class="answer">
-Yes, within 7 days.
-</div>
-</div>
-
 </section>
 
 <footer id="contact">
-
-<div class="footer-grid">
-
-<div>
-
 <h2>VELLA CO.</h2>
-
-<p>
-Premium minimal luxury streetwear brand.
-</p>
+<p>Luxury Premium Streetwear Brand</p>
 
 <div class="socials">
-
 <a href="#"><i class="fab fa-instagram"></i></a>
-
 <a href="#"><i class="fab fa-whatsapp"></i></a>
-
 <a href="#"><i class="fab fa-telegram"></i></a>
-
 </div>
-
-</div>
-
-<div>
-
-<h3>Contact</h3>
-
-<br>
-
-<p>Email: support@vellaco.com</p>
-<p>Phone: +91 9876543210</p>
-
-</div>
-
-<div>
-
-<h3>Newsletter</h3>
-
-<br>
-
-<input type="email" placeholder="Your Email"
-style="padding:14px;width:100%;border:none;border-radius:12px;background:white;">
-
-<br><br>
-
-<button class="btn">
-Subscribe
-</button>
-
-</div>
-
-</div>
-
-<br><br>
-
-<p style="text-align:center;">
-© 2026 VELLA CO. All Rights Reserved.
-</p>
-
 </footer>
 
-<!-- CART -->
-
 <div class="cart" id="cart">
-
 <div style="display:flex;justify-content:space-between;align-items:center;">
-
 <h2>Your Cart</h2>
-
-<i class="fa fa-times" id="closeCart" style="cursor:pointer;font-size:22px;"></i>
-
+<i class="fa fa-times" id="closeCart"></i>
 </div>
 
-<div class="cart-items" id="cartItems"></div>
+<div id="cartItems"></div>
 
 <h3>Total: ₹<span id="total">0</span></h3>
 
-<button class="checkout-btn" onclick="openCheckout()">
-Checkout
-</button>
-
-<button class="checkout-btn"
-style="background:#25D366;"
-onclick="whatsappOrder()">
-WhatsApp Order
-</button>
-
+<button class="checkout-btn" onclick="openCheckout()">Checkout</button>
 </div>
 
-<!-- MODAL -->
-
 <div class="modal" id="modal">
-
 <div class="modal-box">
-
 <img id="modalImg">
 
 <div class="modal-content">
-
 <h2 id="modalTitle"></h2>
-
 <br>
-
 <h3 id="modalPrice"></h3>
+<br>
+<p>Premium oversized streetwear with luxury-grade fabric and modern silhouette.</p>
 
 <br>
-
-<p>
-Premium oversized streetwear with luxury-grade fabric and modern silhouette.
-</p>
-
-<br>
-
 <h4>Select Size</h4>
-
 <br>
 
-<select id="productSize"
-style="
-width:100%;
-padding:16px;
-border:none;
-background:var(--card);
-border-radius:14px;
-font-size:16px;
-color:var(--text);
-outline:none;
-">
-
+<select id="productSize" style="width:100%;padding:16px;border:none;background:var(--card);border-radius:14px;color:var(--text);">
 <option>S</option>
 <option>M</option>
 <option>L</option>
 <option>XL</option>
-
 </select>
 
 <br><br>
 
 <h4>Quantity</h4>
-
 <br>
 
-<input type="number" id="productQty" value="1" min="1"
-style="padding:14px;width:100%;border:none;background:var(--card);border-radius:12px;color:var(--text);">
+<input type="number" id="productQty" value="1" min="1" style="width:100%;padding:16px;border:none;background:var(--card);border-radius:14px;color:var(--text);">
 
 <br><br>
 
-<button class="checkout-btn" onclick="openCheckout()">
-Buy Now
-</button>
+<button class="checkout-btn" onclick="buyNow()">Buy Now</button>
 
 </div>
-
 </div>
-
 </div>
-
-<!-- CHECKOUT -->
 
 <div class="checkout-page" id="checkoutPage">
-
 <div class="checkout-box">
 
 <div>
-
 <h2>Checkout</h2>
 
-<br>
-
 <input type="text" id="name" placeholder="Full Name">
-
 <input type="email" id="email" placeholder="Email">
-
-<input type="tel" id="phone" placeholder="Phone Number">
-
+<input type="tel" id="phone" placeholder="Phone Number" maxlength="10">
 <textarea id="address" placeholder="Delivery Address"></textarea>
 
 <select id="paymentMethod">
-
 <option value="online">Online Payment</option>
-
-<option value="cod">Cash on Delivery</option>
-
+<option value="cod">Cash On Delivery</option>
 </select>
-
-<input type="text" id="razorpayKey"
-placeholder="Enter Razorpay Key (optional)">
-
 </div>
 
 <div>
-
 <h2>Order Summary</h2>
-
 <br>
-
 <div id="summary"></div>
-
 <br>
-
-<button class="checkout-btn" onclick="placeOrder()">
-Place Order
-</button>
-
+<button class="checkout-btn" onclick="placeOrder()">Place Order</button>
 </div>
 
 </div>
-
 </div>
 
-<a class="float-wa" href="https://wa.me/919999999999">
-<i class="fab fa-whatsapp"></i>
-</a>
-
-<div class="top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-<i class="fa fa-arrow-up"></i>
-</div>
+<a class="float-wa" href="https://wa.me/919999999999"><i class="fab fa-whatsapp"></i></a>
+<div class="top" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fa fa-arrow-up"></i></div>
 
 <script>
 
-/* PRODUCTS */
-
 const products=[
-
 {
 id:1,
-title:"Oversized Black Hoodie",
+title:'Oversized Black Hoodie',
 price:2499,
-category:"hoodie",
-image:"https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=1200&auto=format&fit=crop"
+category:'hoodie',
+image:'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=1200&auto=format&fit=crop'
 },
-
 {
 id:2,
-title:"Minimal White Tee",
+title:'Minimal White Tee',
 price:1499,
-category:"tshirt",
-image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1200&auto=format&fit=crop"
+category:'tshirt',
+image:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1200&auto=format&fit=crop'
 },
-
 {
 id:3,
-title:"Premium Bomber Jacket",
-price:4299,
-category:"jacket",
-image:"https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1200&auto=format&fit=crop"
-},
-
-{
-id:4,
-title:"Luxury Oversized Tee",
-price:1899,
-category:"tshirt",
-image:"https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1200&auto=format&fit=crop"
-},
-
-{
-id:5,
-title:"Urban Gray Hoodie",
-price:2899,
-category:"hoodie",
-image:"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=1200&auto=format&fit=crop"
-},
-
-{
-id:6,
-title:"Streetwear Jacket",
-price:4699,
-category:"jacket",
-image:"https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1200&auto=format&fit=crop"
+title:'Premium Jacket',
+price:3999,
+category:'jacket',
+image:'https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1200&auto=format&fit=crop'
 }
-
 ];
 
 let cart=JSON.parse(localStorage.getItem('cart'))||[];
-let orders=JSON.parse(localStorage.getItem('orders'))||[];
 let wishlist=JSON.parse(localStorage.getItem('wishlist'))||[];
+let currentProduct=null;
 
 const productsDiv=document.getElementById('products');
 
-/* RENDER */
-
-function renderProducts(list){
-
+function renderProducts(items){
 productsDiv.innerHTML='';
 
-list.forEach(p=>{
-
+items.forEach(p=>{
 productsDiv.innerHTML+=`
-
-<div class="product reveal">
-
+<div class="product">
 <div class="product-img">
-
 <div class="badge">20% OFF</div>
 
 <div class="wishlist" onclick="toggleWishlist(${p.id})">
-
 <i class="fa ${wishlist.includes(p.id)?'fa-heart':'fa-heart-o'}"></i>
-
 </div>
 
 <img src="${p.image}">
-
 </div>
 
 <div class="info">
-
 <h3>${p.title}</h3>
 
 <div class="price">
-
 <h2>₹${p.price}</h2>
-
 <span class="old">₹${p.price+1000}</span>
-
 </div>
 
 <div class="stars">★★★★★</div>
 
 <div class="options">
-
 <select>
 <option>S</option>
 <option>M</option>
@@ -1307,89 +714,22 @@ productsDiv.innerHTML+=`
 <option>White</option>
 <option>Gray</option>
 </select>
-
 </div>
 
 <div class="actions">
-
-<button class="add"
-onclick="addToCart(${p.id})">
-Add to Cart
-</button>
-
-<button class="view"
-onclick="openModal(${p.id})">
-Quick View
-</button>
-
+<button class="add" onclick="addToCart(${p.id})">Add To Cart</button>
+<button class="view" onclick="openModal(${p.id})">Quick View</button>
 </div>
-
 </div>
-
 </div>
-
 `;
-
 });
-
-reveal();
-
 }
 
 renderProducts(products);
-
-/* SEARCH */
-
-document.getElementById('searchInput').addEventListener('input',(e)=>{
-
-const value=e.target.value.toLowerCase();
-
-renderProducts(
-products.filter(p=>
-p.title.toLowerCase().includes(value)
-)
-);
-
-});
-
-/* FILTER */
-
-document.getElementById('categoryFilter').addEventListener('change',(e)=>{
-
-const value=e.target.value;
-
-if(value==='all'){
-renderProducts(products);
-}else{
-renderProducts(products.filter(p=>p.category===value));
-}
-
-});
-
-/* SORT */
-
-document.getElementById('sortFilter').addEventListener('change',(e)=>{
-
-let sorted=[...products];
-
-if(e.target.value==='low'){
-sorted.sort((a,b)=>a.price-b.price);
-}
-
-if(e.target.value==='high'){
-sorted.sort((a,b)=>b.price-a.price);
-}
-
-renderProducts(sorted);
-
-});
-
-/* CART */
 
 function addToCart(id){
-
 const item=products.find(p=>p.id===id);
-
 const exist=cart.find(p=>p.id===id);
 
 if(exist){
@@ -1399,90 +739,53 @@ cart.push({...item,qty:1});
 }
 
 saveCart();
-
 }
 
 function saveCart(){
-
 localStorage.setItem('cart',JSON.stringify(cart));
-
 renderCart();
-
 }
 
 function renderCart(){
-
 const cartItems=document.getElementById('cartItems');
-
 cartItems.innerHTML='';
 
 let total=0;
-
-if(cart.length===0){
-
-cartItems.innerHTML=`
-<div style="text-align:center;padding:80px 20px;">
-<i class="fa fa-shopping-bag"
-style="font-size:50px;opacity:.3;"></i>
-<br><br>
-<h3>Cart is Empty</h3>
-</div>
-`;
-
-}
 
 cart.forEach(item=>{
 
 total+=item.price*item.qty;
 
 cartItems.innerHTML+=`
-
 <div class="cart-item">
-
 <img src="${item.image}">
 
 <div style="flex:1;">
-
 <h4>${item.title}</h4>
-
 <p>₹${item.price}</p>
 
 <div class="qty">
-
 <button onclick="changeQty(${item.id},-1)">-</button>
-
 <span>${item.qty}</span>
-
 <button onclick="changeQty(${item.id},1)">+</button>
-
 </div>
-
 </div>
-
-<i class="fa fa-trash"
-style="cursor:pointer;"
-onclick="removeItem(${item.id})"></i>
-
 </div>
-
 `;
-
 });
 
+if(cart.length===0){
+cartItems.innerHTML='<p style="padding:30px 0;">Cart Empty</p>';
+}
+
 document.getElementById('total').innerText=total;
-
 document.getElementById('cartCount').innerText=cart.length;
-
 }
 
 renderCart();
 
-/* QTY */
-
 function changeQty(id,change){
-
 let item=cart.find(i=>i.id===id);
-
 item.qty+=change;
 
 if(item.qty<=0){
@@ -1490,23 +793,9 @@ cart=cart.filter(i=>i.id!==id);
 }
 
 saveCart();
-
 }
-
-/* REMOVE */
-
-function removeItem(id){
-
-cart=cart.filter(i=>i.id!==id);
-
-saveCart();
-
-}
-
-/* WISHLIST */
 
 function toggleWishlist(id){
-
 if(wishlist.includes(id)){
 wishlist=wishlist.filter(i=>i!==id);
 }else{
@@ -1514,309 +803,124 @@ wishlist.push(id);
 }
 
 localStorage.setItem('wishlist',JSON.stringify(wishlist));
-
 renderProducts(products);
-
 }
 
-/* MODAL */
-
-let currentProduct=null;
-
 function openModal(id){
-
 currentProduct=products.find(p=>p.id===id);
 
 document.getElementById('modal').classList.add('active');
-
 document.getElementById('modalImg').src=currentProduct.image;
-
 document.getElementById('modalTitle').innerText=currentProduct.title;
-
 document.getElementById('modalPrice').innerText='₹'+currentProduct.price;
 
-/* BACK BUTTON SUPPORT */
-
-history.pushState(
-{
-type:'product',
-id:id
-},
-'',
-'#product-'+id
-);
-
+history.pushState({type:'product'},'',`#product-${id}`);
 }
 
-/* CLOSE MODAL */
+function buyNow(){
+const qty=Number(document.getElementById('productQty').value);
 
-document.getElementById('modal').addEventListener('click',(e)=>{
+cart=[];
+cart.push({...currentProduct,qty});
 
-if(e.target.id==='modal'){
+saveCart();
 
-document.getElementById('modal').classList.remove('active');
-
-history.back();
-
+openCheckout();
 }
-
-});
-
-/* CART */
-
-document.getElementById('cartBtn').onclick=()=>{
-
-document.getElementById('cart').classList.add('active');
-
-history.pushState(
-{
-type:'cart'
-},
-'',
-'#cart'
-);
-
-};
-
-document.getElementById('closeCart').onclick=()=>{
-
-document.getElementById('cart').classList.remove('active');
-
-history.back();
-
-};
-
-/* MOBILE BACK */
-
-window.addEventListener('popstate',()=>{
-
-document.getElementById('modal').classList.remove('active');
-
-document.getElementById('cart').classList.remove('active');
-
-if(location.hash.includes('#product-')){
-
-const id=Number(location.hash.replace('#product-',''));
-
-const product=products.find(p=>p.id===id);
-
-if(product){
-
-currentProduct=product;
-
-document.getElementById('modal').classList.add('active');
-
-document.getElementById('modalImg').src=product.image;
-
-document.getElementById('modalTitle').innerText=product.title;
-
-document.getElementById('modalPrice').innerText='₹'+product.price;
-
-}
-
-}
-
-if(location.hash==='#cart'){
-
-document.getElementById('cart').classList.add('active');
-
-}
-
-});
-
-/* CHECKOUT */
 
 function openCheckout(){
-
 document.getElementById('checkoutPage').classList.add('active');
 
 let summary='';
 
 cart.forEach(item=>{
-
 summary+=`
-<div style="display:flex;justify-content:space-between;margin-bottom:15px;">
+<div style="display:flex;justify-content:space-between;margin-bottom:12px;">
 <span>${item.title} x ${item.qty}</span>
 <span>₹${item.price*item.qty}</span>
 </div>
 `;
-
 });
 
-summary+=`
-<hr><br>
-<h3>Total: ₹${document.getElementById('total').innerText}</h3>
-`;
+summary+=`<hr><br><h3>Total: ₹${document.getElementById('total').innerText}</h3>`;
 
 document.getElementById('summary').innerHTML=summary;
 
-history.pushState(
-{
-type:'checkout'
-},function
-'',
-'#checkout'
-);
-
+history.pushState({type:'checkout'},'',`#checkout`);
 }
-
-/* PLACE ORDER */
 
 function placeOrder(){
 
 const name=document.getElementById('name').value.trim();
-
 const email=document.getElementById('email').value.trim();
-
 const phone=document.getElementById('phone').value.trim();
-
 const address=document.getElementById('address').value.trim();
-
 const payment=document.getElementById('paymentMethod').value;
 
-const razorpayKey=
-document.getElementById('razorpayKey').value.trim() ||
-"rzp_test_1DP5mmOlF5G5ag";
-
 if(!name || !email || !phone || !address){
-
-showToast("Please fill all details");
-
+showToast('Please fill all details');
 return;
-
 }
 
 if(!/^[0-9]{10}$/.test(phone)){
-
-showToast("Phone number must be exactly 10 digits");
-
+showToast('Phone number must be exactly 10 digits');
 return;
-
 }
-
-const order={
-
-name,
-email,
-phone,
-address,
-payment,
-cart,
-total:document.getElementById('total').innerText
-
-};
-
-orders.push(order);
-
-localStorage.setItem('orders',JSON.stringify(orders));
-
-/* ONLINE PAYMENT */
 
 if(payment==='online'){
 
 const options={
-
-key:razorpayKey,
-
-amount:Number(order.total)*100,
-
-currency:"INR",
-
-name:"VELLA CO.",
-
-description:"Premium Fashion Order",
-
-image:"https://i.imgur.com/8Km9tLL.png",
-
-handler:function(response){
-
+key:'rzp_test_1DP5mmOlF5G5ag',
+amount:Number(document.getElementById('total').innerText)*100,
+currency:'INR',
+name:'VELLA CO.',
+description:'Premium Fashion Order',
+handler:function(){
 showSuccess();
-
 },
-
 prefill:{
-
 name:name,
 email:email,
 contact:phone
-
 },
-
 theme:{
-color:"#000000"
+color:'#000000'
 }
-
 };
 
 const rzp=new Razorpay(options);
-
 rzp.open();
-
 }
-
-/* COD PAYMENT */
 
 if(payment==='cod'){
 
 let text=`🛍️ *VELLA CO. ORDER*%0A%0A`;
-
 text+=`👤 Name: ${name}%0A`;
-
 text+=`📞 Phone: ${phone}%0A`;
-
 text+=`📍 Address: ${address}%0A%0A`;
 
 cart.forEach(item=>{
-
 text+=`• ${item.title} x ${item.qty} - ₹${item.price*item.qty}%0A`;
-
 });
 
-text+=`%0A💰 Total: ₹${order.total}`;
+text+=`%0A💰 Total: ₹${document.getElementById('total').innerText'}`;
 
-window.open(
-
-`https://wa.me/919999999999?text=${text}`
-
-);
+window.open(`https://wa.me/919999999999?text=${text}`);
 
 showSuccess();
-
 }
-
 }
-
-/* SUCCESS */
 
 function showSuccess(){
 
-document.getElementById('checkoutPage').classList.remove('active');
-
-document.getElementById('modal').classList.remove('active');
-
-document.getElementById('cart').classList.remove('active');
-
 cart=[];
-
 saveCart();
 
 const popup=document.createElement('div');
 
 popup.innerHTML=`
-<div style="
-position:fixed;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-background:white;
-padding:40px;
-border-radius:30px;
-z-index:999999;
-text-align:center;
-box-shadow:0 20px 50px rgba(0,0,0,.2);
-">
-<i class="fa fa-check-circle"
-style="font-size:70px;color:black;"></i>
+<div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:white;padding:40px;border-radius:30px;z-index:999999;text-align:center;width:320px;box-shadow:0 20px 50px rgba(0,0,0,.2);">
+<i class="fa fa-check-circle" style="font-size:70px;color:black;"></i>
 <br><br>
 <h2>Order Successful</h2>
 <br>
@@ -1830,115 +934,93 @@ setTimeout(()=>{
 popup.remove();
 },3000);
 
+
+document.getElementById('checkoutPage').classList.remove('active');
+document.getElementById('modal').classList.remove('active');
+document.getElementById('cart').classList.remove('active');
 }
 
-/* WHATSAPP */
+function showToast(message){
 
-function whatsappOrder(){
+const toast=document.createElement('div');
 
-let text='🛍️ *VELLA CO. ORDER*%0A%0A';
+toast.innerHTML=message;
 
-cart.forEach(item=>{
+toast.style.cssText=`
+position:fixed;
+bottom:30px;
+left:50%;
+transform:translateX(-50%);
+background:black;
+color:white;
+padding:16px 25px;
+border-radius:50px;
+z-index:999999;
+`;
 
-text+=`• ${item.title} x ${item.qty} - ₹${item.price*item.qty}%0A`;
+document.body.appendChild(toast);
 
-});
-
-text+=`%0ATotal: ₹${document.getElementById('total').innerText}`;
-
-window.open(
-`https://wa.me/919999999999?text=${text}`
-);
-
+setTimeout(()=>{
+toast.remove();
+},2500);
 }
 
-/* FAQ */
-
-document.querySelectorAll('.faq').forEach(f=>{
-
-f.addEventListener('click',()=>{
-
-f.classList.toggle('active');
-
+document.getElementById('phone').addEventListener('input',function(){
+this.value=this.value.replace(/[^0-9]/g,'').slice(0,10);
 });
 
+/* SEARCH */
+
+document.getElementById('searchInput').addEventListener('input',(e)=>{
+const value=e.target.value.toLowerCase();
+
+renderProducts(products.filter(p=>p.title.toLowerCase().includes(value)));
+});
+
+/* FILTER */
+
+document.getElementById('categoryFilter').addEventListener('change',(e)=>{
+if(e.target.value==='all'){
+renderProducts(products);
+}else{
+renderProducts(products.filter(p=>p.category===e.target.value));
+}
 });
 
 /* THEME */
 
 document.getElementById('themeBtn').onclick=()=>{
-
 document.body.classList.toggle('dark');
-
-};
-
-/* MENU */
-
-document.getElementById('menuBtn').onclick=()=>{
-
-document.querySelector('.nav-links').classList.toggle('active');
-
-};
-
-/* REVEAL */
-
-function reveal(){
-
-document.querySelectorAll('.reveal').forEach(sec=>{
-
-const top=sec.getBoundingClientRect().top;
-
-if(top<window.innerHeight-80){
-
-sec.classList.add('active');
-
 }
 
-});
+/* CART */
 
-}
-
-window.addEventListener('scroll',reveal);
-
-/* LOADER */
-
-window.onload=()=>{
-
-setTimeout(()=>{
-
-document.querySelector('.loader').style.opacity='0';
-
-setTimeout(()=>{
-
-document.querySelector('.loader').style.display='none';
-
-},1000);
-
-},1800);
-
-};
-
-/* CLOSE CHECKOUT ON BACK */
-
-window.addEventListener('popstate',()=>{
-
-document.getElementById('checkoutPage').classList.remove('active');
-
-});
-
-/* DIRECT HASH OPEN */
-
-window.addEventListener('load',()=>{
-
-if(location.hash==='#cart'){
-
+document.getElementById('cartBtn').onclick=()=>{
 document.getElementById('cart').classList.add('active');
-
+history.pushState({type:'cart'},'',`#cart`);
 }
 
+document.getElementById('closeCart').onclick=()=>{
+document.getElementById('cart').classList.remove('active');
+history.back();
+}
+
+/* BACK BUTTON */
+window.addEventListener('popstate',()=>{
+document.getElementById('modal').classList.remove('active');
+document.getElementById('checkoutPage').classList.remove('active');
+document.getElementById('cart').classList.remove('active');
+});
+
+/* CLOSE MODAL */
+
+document.getElementById('modal').addEventListener('click',(e)=>{
+if(e.target.id==='modal'){
+document.getElementById('modal').classList.remove('active');
+history.back();
+}
 });
 
 </script>
-
 </body>
 </html>
