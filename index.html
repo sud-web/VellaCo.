@@ -1,132 +1,115 @@
-This is a complete, single-file solution for **VELLA CO.**, designed as a modern, premium eCommerce application. It uses a state-based navigation system within the single index.html to handle the transition between Home, Product, and Checkout views without reloading.
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VELLA CO. | Premium Minimal Fashion</title>
+    <title>VELLA CO. | Premium Fashion Store</title>
     <style>
-        :root { --bg: #ffffff; --text: #000000; --accent: #333; }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Helvetica Neue', Arial, sans-serif; }
-        body { background: var(--bg); color: var(--text); line-height: 1.6; }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #f8f8f8; color: #111; }
+
         /* Navbar */
-        nav { position: sticky; top: 0; background: white; z-index: 1000; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; }
-        .logo { font-weight: bold; font-size: 1.5rem; letter-spacing: 2px; cursor: pointer; }
-        .nav-icons { display: flex; gap: 15px; }
-        
-        /* Layout */
-        .container { max-width: 1200px; margin: auto; padding: 20px; }
-        .product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-        @media (min-width: 768px) { .product-grid { grid-template-columns: repeat(3, 1fr); } }
-        
-        /* Product Card */
-        .card { border: 1px solid #f4f4f4; padding: 15px; text-align: center; transition: 0.3s; }
-        .card img { width: 100%; height: 250px; object-fit: cover; }
-        .btn { background: black; color: white; border: none; padding: 10px 20px; cursor: pointer; width: 100%; margin-top: 10px; }
-        
+        nav { background: #131921; color: white; padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 1000; }
+        .logo { font-size: 24px; font-weight: bold; cursor: pointer; }
+        .search-bar { flex: 1; margin: 0 20px; display: flex; }
+        .search-bar input { width: 100%; padding: 8px; border: none; }
+        .cart-icon { cursor: pointer; font-size: 20px; }
+
+        /* Product Grid */
+        .container { max-width: 1200px; margin: 20px auto; padding: 0 10px; }
+        .product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+        @media (min-width: 768px) { .product-grid { grid-template-columns: repeat(4, 1fr); } }
+
+        .card { background: white; padding: 15px; border: 1px solid #ddd; transition: 0.3s; }
+        .card img { width: 100%; height: 200px; object-fit: cover; margin-bottom: 10px; }
+        .price { color: #b12704; font-size: 18px; font-weight: bold; }
+        .btn { background: #ffd814; border: 1px solid #fcd200; padding: 8px; width: 100%; cursor: pointer; margin-top: 5px; font-weight: bold; }
+
         /* Pages */
         .page { display: none; }
         .active { display: block; }
         
-        /* Checkout Form */
-        input, select { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; }
-        
-        /* Floating Buttons */
-        .float-btn { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; padding: 15px; border-radius: 50%; cursor: pointer; }
+        #checkout-form { background: white; padding: 20px; max-width: 500px; margin: auto; }
+        input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; }
     </style>
 </head>
 <body>
 
 <nav>
     <div class="logo" onclick="showPage('home')">VELLA CO.</div>
-    <div class="nav-icons">
-        <input type="text" placeholder="Search...">
-        <span onclick="showPage('cart')">🛒</span>
-    </div>
+    <div class="search-bar"><input type="text" placeholder="Search products..."></div>
+    <div class="cart-icon" onclick="showPage('cart')">🛒 Cart (<span id="cart-count">0</span>)</div>
 </nav>
 
 <div id="home" class="page active container">
-    <h2>New Arrivals</h2>
+    <h2>Featured Products</h2>
     <div class="product-grid" id="productGrid"></div>
 </div>
 
-<div id="product-detail" class="page container">
-    <button onclick="showPage('home')">← Back</button>
-    <div id="detail-content"></div>
-</div>
-
 <div id="cart" class="page container">
-    <h2>Checkout</h2>
-    <div id="cart-items"></div>
-    <form id="checkoutForm">
+    <h2>Your Order</h2>
+    <div id="cart-list"></div>
+    <div id="checkout-form">
         <input type="text" id="name" placeholder="Full Name" required>
-        <input type="email" id="email" placeholder="Email" required>
-        <input type="tel" id="phone" placeholder="Phone (10 digits)" pattern="\d{10}" required>
-        <textarea id="address" placeholder="Address" required></textarea>
-        <button type="button" onclick="processPayment('razorpay')" class="btn">Pay Online (Razorpay)</button>
-        <button type="button" onclick="processPayment('cod')" class="btn">Cash on Delivery</button>
-    </form>
+        <input type="tel" id="phone" placeholder="Phone Number (10 digits)" required>
+        <input type="text" id="address" placeholder="Delivery Address" required>
+        <button class="btn" onclick="placeOrder('cod')">Cash on Delivery</button>
+        <button class="btn" style="background:#28a745; color:white;" onclick="placeOrder('razorpay')">Pay Online</button>
+    </div>
 </div>
-
-<div class="float-btn">WhatsApp</div>
 
 <script>
     const products = [
-        { id: 1, name: "Minimalist Tee", price: 29.99, img: "https://via.placeholder.com/300" },
-        { id: 2, name: "Premium Hoodie", price: 89.99, img: "https://via.placeholder.com/300" }
+        { id: 1, name: "Premium T-Shirt", price: 499, img: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab" },
+        { id: 2, name: "Slim Fit Jeans", price: 1299, img: "https://images.unsplash.com/photo-1542272604-787c3835535d" }
     ];
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
     function showPage(pageId) {
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
         document.getElementById(pageId).classList.add('active');
+        if(pageId === 'cart') renderCart();
     }
 
     function renderProducts() {
         const grid = document.getElementById('productGrid');
         grid.innerHTML = products.map(p => `
             <div class="card">
-                <img src="${p.img}" onclick="viewProduct(${p.id})">
+                <img src="${p.img}">
                 <h3>${p.name}</h3>
-                <p>$${p.price}</p>
+                <p class="price">₹${p.price}</p>
                 <button class="btn" onclick="addToCart(${p.id})">Add to Cart</button>
             </div>
         `).join('');
     }
 
-    function viewProduct(id) {
-        const p = products.find(x => x.id === id);
-        document.getElementById('detail-content').innerHTML = `
-            <h1>${p.name}</h1>
-            <p>Price: $${p.price}</p>
-            <button class="btn" onclick="showPage('cart')">Order Now</button>
-        `;
-        showPage('product-detail');
-    }
-
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
     function addToCart(id) {
         cart.push(products.find(p => p.id === id));
         localStorage.setItem('cart', JSON.stringify(cart));
-        alert("Added to cart!");
+        document.getElementById('cart-count').innerText = cart.length;
+        alert("Added to Cart!");
     }
 
-    function processPayment(method) {
-        const phone = document.getElementById('phone').value;
-        if(phone.length !== 10) return alert("Enter 10 digit number");
+    function renderCart() {
+        const list = document.getElementById('cart-list');
+        list.innerHTML = cart.map((p, index) => `<p>${p.name} - ₹${p.price} <button onclick="removeFromCart(${index})">Remove</button></p>`).join('');
+    }
 
+    function placeOrder(method) {
+        const phone = document.getElementById('phone').value;
+        if(phone.length !== 10) return alert("Please enter a valid 10-digit number.");
+        
         if(method === 'razorpay') {
-            alert("Integrating Razorpay Key: YOUR_RAZORPAY_KEY");
+            alert("Redirecting to Razorpay... (Key: YOUR_RAZORPAY_KEY)");
         } else {
-            const msg = `Order Details: Name: ${document.getElementById('name').value}, Phone: ${phone}`;
-            window.open(`https://wa.me/91XXXXXXXXXX?text=${encodeURIComponent(msg)}`);
+            const msg = `Order: ${cart.map(i=>i.name).join(', ')}. Name: ${document.getElementById('name').value}, Addr: ${document.getElementById('address').value}`;
+            window.location.href = `https://wa.me/91XXXXXXXXXX?text=${encodeURIComponent(msg)}`;
         }
     }
 
     renderProducts();
+    document.getElementById('cart-count').innerText = cart.length;
 </script>
 </body>
 </html>
-
-```
